@@ -1,22 +1,29 @@
 import 'react'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, Card, Col, Image, Row } from 'react-bootstrap';
 import Nav from 'react-bootstrap/Nav';
+import axios from 'axios';
 
 import logo from "../../assets/anyone/eco-logo.png";
 
 
 const Header = () => {
-    const [isVisible, setIsVisible] = useState(true);
     const navi = useNavigate();
+    const [isVisible, setIsVisible] = useState(false);
 
-    
-
-
-    if(sessionStorage.getItem("id")) {
-        setIsVisible(false);
-    }
+    useEffect(() => {
+        const isAuthCheck = async () => {
+            try {
+                const response = await axios.get('api/api/protected')
+                console.log(response.data)
+            } catch (error) {
+                console.error("isAuthCheck error")
+                setIsVisible(error.response.data.user)
+            }
+        }
+        isAuthCheck()
+    }, [])
 
     return (
         <>
@@ -31,13 +38,13 @@ const Header = () => {
 
                 <Col className='text-end me-3'>
                     <Button onClick={() => navi('/login')} variant="dark" style={{ display: isVisible ? "none":"" }}>로그인</Button>
-                    <Button onClick={() => navi('/login')} variant="dark" style={{ display: isVisible ? "":"none" }}>로그아웃</Button>
+                    <Button onClick={() => navi('api/api/logout')} variant="dark" style={{ display: isVisible ? "":"none" }}>로그아웃</Button>
                 </Col>
             </Row>
 
             <Nav className="justify-content-center" activeKey="home">
                 <Nav.Item>
-                    <Nav.Link eventKey="home" className='text-secondary' onClick={() => navi('/home')}>홈</Nav.Link>
+                    <Nav.Link eventKey="home" className='text-secondary' onClick={() => navi('/')}>홈</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
                     <Nav.Link eventKey="notice" className='text-secondary' onClick={() => navi('/notice')}>공지사항</Nav.Link>
@@ -60,7 +67,7 @@ const Header = () => {
                 </Nav.Item>
             </Nav>
 
-            <div style={{ borderBottom: "1px solid #ddd" }}></div>
+            <div style={{ borderBottom: "1px solid #ddd" }} ></div>
         </>
     )
 }
