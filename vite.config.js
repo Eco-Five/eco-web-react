@@ -17,7 +17,7 @@ export default defineConfig({
         changeOrigin: true,   // 요청 헤더의 Origin을 Node.js 서버로 변경
         secure: false,
         // Vite에서 /node/about로 요청하면 Node.js 서버에서는 /about 전달됩니다.
-        rewrite: (path) => path.replace(/^\/node/, ''), // '/api'를 제거
+        rewrite: (path) => path.replace(/^\/node/, ''), // '/node'를 제거
       },
     }
   }
