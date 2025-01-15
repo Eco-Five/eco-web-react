@@ -1,9 +1,19 @@
 import 'react'
-import { Link } from 'react-router-dom'
+import Slide from './Slide';
+import Category from './Category';
+import MainProduct from './MainProduct';
+import DataEnv from './DataEnv';
+import Youtube from './Youtube';
 
 const Home = () => {
     return (
-        <Link to='/login'>Home</Link>
+        <>
+            <Slide />
+            <Category />
+            <MainProduct />
+            <DataEnv />
+            <Youtube />
+        </>
     )
 }
 

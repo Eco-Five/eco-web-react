@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import '/src/assets/css/login/Login.css';
 import axios from 'axios';
 
@@ -7,14 +7,13 @@ import axios from 'axios';
 const Login = () => {
   const [loginInfo, setLoginInfo] = useState({ loginEmail: '', loginPwd: '' }); // 로그인 정보 저장
   const [error, setError] = useState(null); // 에러 상태
-  const navigate = useNavigate()
 
   // 로그인 API 호출
   const loginCheck = async (info) => {
     try {
       const response = await axios.post('/api/api/memberLogin', info); // Axios로 POST 요청
       console.log(response.data);
-      navigate('/'); // 성공 시 메인 페이지로 이동
+      window.location.href = '/'; // 성공 시 메인 페이지로 이동
     } catch (err) {
       console.error('로그인 요청 중 오류 발생:', err);
       setError('로그인 요청 중 오류가 발생했습니다. 다시 시도해주세요.');
