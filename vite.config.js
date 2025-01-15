@@ -19,7 +19,7 @@ export default defineConfig({
         secure: false,
         // Vite에서 /api/users로 요청하면 Node.js 서버에서는 /users로 전달됩니다.
         rewrite: (path) => path.replace(/^\/api/, ''), // '/api'를 제거
-      },
+      }
     }
   }
 });
