@@ -18,13 +18,6 @@ export default defineConfig({
         secure: false,
         // Vite에서 /api/users로 요청하면 Node.js 서버에서는 /users로 전달됩니다.
         rewrite: (path) => path.replace(/^\/api/, ''), // '/api'를 제거
-      },
-      '/users': {
-        target: 'https://localhost:5678',  // 프록시할 대상 서버 : Node.js 백엔드 서버 주소
-        changeOrigin: true,   // 요청 헤더의 Origin을 Node.js 서버로 변경
-        secure: false,
-        // Vite에서 /api/users로 요청하면 Node.js 서버에서는 /users로 전달됩니다.
-        rewrite: (path) => path.replace(/^\/users/, ''), // '/users'를 제거
       }
     }
   }
