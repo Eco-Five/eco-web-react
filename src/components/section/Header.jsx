@@ -15,7 +15,7 @@ const Header = () => {
     useEffect(() => {
         const isAuthCheck = async () => {
             try {
-                const response = await axios.get('node/api/protected')
+                const response = await axios.get('api/api/protected')
                 console.log(response.data)
             } catch (error) {
                 console.error("isAuthCheck error")
@@ -38,7 +38,7 @@ const Header = () => {
 
                 <Col className='text-end me-3'>
                     <Button onClick={() => navi('/login')} variant="dark" style={{ display: isVisible ? "none":"" }}>로그인</Button>
-                    <Button onClick={() => navi('node/api/logout')} variant="dark" style={{ display: isVisible ? "":"none" }}>로그아웃</Button>
+                    <Button onClick={() => navi('api/api/logout')} variant="dark" style={{ display: isVisible ? "":"none" }}>로그아웃</Button>
                 </Col>
             </Row>
 

@@ -15,7 +15,7 @@ const Youtube = () => {
     useEffect(() => {
         const axiosYoutubeData = async () => {
             try {
-                const response = await axios.get('node/users/youtube')
+                const response = await axios.get('api/users/youtube')
                 setYoutubeData(response.data.items)
                 console.log(response.data)
             } catch (error) {
