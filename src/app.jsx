@@ -4,11 +4,11 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import Header from './components/section/Header';
 import Footer from './components/section/Footer';
 import About from './pages/home/About';
-import MyPage from "./pages/mypage/MyPage";
 
 const Home = lazy(() => import("./pages/home/Home"));
 const Login = lazy(() => import("./pages/login/Login"));
 const Find = lazy(() => import("./pages/find/Find"));
+const MyPage = lazy(() => import("./pages/mypage/MyPage"));
 
 
 //============= Header와 Footer를 제외한 레이아웃===============//

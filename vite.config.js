@@ -13,7 +13,7 @@ export default defineConfig({
     port: 3456,
     // 서버 프록시 설정
     proxy: {
-      '/node': {
+      '/api': {
         target: 'https://localhost:5678',  // 프록시할 대상 서버 : Node.js 백엔드 서버 주소
         changeOrigin: true,   // 요청 헤더의 Origin을 Node.js 서버로 변경
         secure: false,
