@@ -5,6 +5,7 @@ import Header from './components/section/Header';
 import Footer from './components/section/Footer';
 import About from './pages/home/About';
 import MyPage from "./pages/mypage/MyPage";
+import Payment from './pages/payment/Payment';
 
 const Home = lazy(() => import("./pages/home/Home"));
 const Login = lazy(() => import("./pages/login/Login"));
@@ -41,6 +42,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/login/find" element={<Find />} />
             <Route path="/mypage" element={<MyPage />} />
+            <Route path="/payment" element={<Payment />} />
           </Routes>
         </AppLayout>
       </Suspense>
