@@ -12,7 +12,7 @@ const MainProduct = () => {
     useEffect(() => {
         const axiosProductData = async () => {
             try {
-                const response = await axios.post('/api/api/naverShop', {
+                const response = await axios.post('/node/api/naverShop', {
                     values: "친환경 인증",
                     page: 1,
                     sort: "sim"
