@@ -1,11 +1,11 @@
 import 'react'
-import bgVideo from '../../assets/home/bg.mp4'
+import bgVideo from '../../assets/home/bg.webm'
 
 const About = () => {
 
     return (
         <>
-            <video src={bgVideo} type="video/mp4" autoPlay loop muted
+            <video src={bgVideo} type="video/webm" autoPlay loop muted preload='metadata'
                 style={{ position: 'absolute', top: 0, left: 0,
                     width: '100%', height: '100vh', objectFit: 'cover', zIndex: -1 }}
             />
