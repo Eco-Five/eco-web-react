@@ -2,49 +2,64 @@ import { useState, useEffect } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 
 const Question = () => {
+    // UseState : 상태 관리
     const [questions, setQuestions] = useState([]);
     const [totalPages, setTotalPages] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
     const [category, setCategory] = useState('all');
 
-    const location = useLocation();
-    const history = useHistory();
+    const location = useLocation(); // 현재 위치(URL)
+    const history = useHistory(); // URL을 변경할 수 있는 기능 제공
 
+    // UseEffect : 컴포넌트 초기 렌더링, API 호출
     useEffect(() => {
         console.log("call");
-        const queryParams = new URLSearchParams(location.search);
+        const queryParams = new URLSearchParams(location.search); // 현재 URL에서 page, category 읽어옴
         const page = queryParams.get('page') || 1;
         const categoryParam = queryParams.get('category') || 'all';
 
-        setCurrentPage(Number(page));
-        setCategory(categoryParam);
+        // 페이지와 카테고리 값이 변경되었을 때만 상태를 업데이트
+        if (Number(page) !== currentPage || categoryParam !== category) {
+            setCurrentPage(Number(page));
+            setCategory(categoryParam);
 
-        const fetchQuestions = async () => {
-            try {
-                const response = await fetch(`/api/question?page=${page}&category=${categoryParam}`);
-                const data = await response.json(); // JSON 데이터 받기
-                setQuestions(data.questions);
-                setTotalPages(data.totalPages);
-            } catch (error) {
-                console.error("API 요청 오류: ", error);
-            }
-        };
+            // /api/question API를 호출해 가져온 데이터 questions, totalPages 상태에 저장
+            const fetchQuestions = async () => {
+                try {
+                    const response = await fetch(`/api/api/question?page=${page}&category=${categoryParam}`);
+                    const data = await response.json(); // JSON 데이터 받기
+                    setQuestions(data.questions);
+                    setTotalPages(data.totalPages);
+                } catch (error) {
+                    console.error("API 요청 오류: ", error);
+                }
+            };
 
-        fetchQuestions();
-    }, []);
+            fetchQuestions();
+        }
+    }, [location.search, currentPage, category]);
 
+    // 카테고리 변경 시 처리
     const handleCategoryChange = (event) => {
         const selectedCategory = event.target.value || 'all';
-        setCategory(selectedCategory);
-        setCurrentPage(1);
-
-        // URL 업데이트
-        history.push(`/question?page=1&category=${selectedCategory}`);
+    
+        // 현재 카테고리와 선택된 카테고리가 다를 때만 페이지를 1로 리셋
+        if (selectedCategory !== category) {
+            setCategory(selectedCategory);
+            setCurrentPage(1);
+    
+            // URL 업데이트 (카테고리 변경 시에만)
+            if (location.search !== `?page=1&category=${selectedCategory}`) {
+                history.push(`/api/question?page=1&category=${selectedCategory}`);
+            }
+        }
     };
-
+    
     const handlePageChange = (page) => {
-        setCurrentPage(page);
-        history.push(`/question?page=${page}&category=${category}`);
+        if (page !== currentPage) { // 페이지가 변경되었을 때만 URL 업데이트
+            setCurrentPage(page);
+            history.push(`/api/question?page=${page}&category=${category}`);
+        }
     };
 
     const formatDate = (dateStr) => {
