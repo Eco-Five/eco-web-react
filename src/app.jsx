@@ -9,6 +9,7 @@ const Home = lazy(() => import("./pages/home/Home"));
 const Login = lazy(() => import("./pages/login/Login"));
 const Find = lazy(() => import("./pages/find/Find"));
 const MyPage = lazy(() => import("./pages/mypage/MyPage"));
+const Payment = lazy(() => import("./pages/payment/Payment"));
 
 
 //============= Header와 Footer를 제외한 레이아웃===============//
@@ -41,6 +42,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/login/find" element={<Find />} />
             <Route path="/mypage" element={<MyPage />} />
+            <Route path="/payment" element={<Payment />} />
           </Routes>
         </AppLayout>
       </Suspense>

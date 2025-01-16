@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const Profile = ({ userId }) => {
+const Profile = () => {
   const [userInfo, setUserInfo] = useState(null);
 
   useEffect(() => {
     const getUserInfo = async () => {
       try {
-        const response = await axios.post('/api/getUserInfo', { userId });
+        const response = await axios.post('/api/api/getUserInfo');
         if (response.data.success) {
           setUserInfo(response.data.data);
         } else {
@@ -19,14 +19,13 @@ const Profile = ({ userId }) => {
     };
 
     getUserInfo();
-  }, [userId]);
+  }, []);
 
   const handleUpdate = async () => {
     const { name, email, phone, address } = userInfo;
 
     try {
-      const response = await axios.post('/api/updateUserInfo', {
-        userId,
+      const response = await axios.post('/api/api/updateUserInfo', {
         name,
         email,
         phone,
@@ -48,7 +47,7 @@ const Profile = ({ userId }) => {
   const handleDelete = async () => {
     if (window.confirm('회원탈퇴하시겠습니까?')) {
       try {
-        const response = await axios.post('/api/deleteUser', { userId });
+        const response = await axios.post('/api/api/deleteUser');
 
         if (response.data.success) {
           await logoutUser();
@@ -66,7 +65,7 @@ const Profile = ({ userId }) => {
 
   const logoutUser = async () => {
     try {
-      await axios.get('/api/logout');
+      await axios.get('/api/api/logout');
       localStorage.removeItem('userToken');
       sessionStorage.removeItem('userToken');
       document.cookie = "connect.sid=; expires=Thu, 01 Jan 1970 00:00:00 GMT";

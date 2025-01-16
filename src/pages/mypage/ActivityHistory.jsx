@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const ActivityHistory = ({ userId }) => {
+const ActivityHistory = () => {
   const [activity, setActivity] = useState(null);
 
   useEffect(() => {
     const getBoardInfo = async () => {
       try {
-        const response = await axios.post('/api/getBoardInfo', { userId });
+        const response = await axios.post('/api/getBoardInfo');
         if (response.data.success) {
           setActivity(response.data.data);
         } else {
@@ -19,7 +19,7 @@ const ActivityHistory = ({ userId }) => {
     };
 
     getBoardInfo();
-  }, [userId]);
+  }, []);
 
   if (!activity) return <div>Loading...</div>;
 

@@ -40,8 +40,7 @@ const Header = () => {
                 <Col className='text-end me-3'>
                     <Button onClick={() => navi('/login')} variant="dark" style={{ display: isVisible ? "none":"" }}>로그인</Button>
                     <Button onClick={() => {navi('api/api/logout')
-                        window.location.reload()
-                    }} variant="dark" style={{ display: isVisible ? "":"none" }}>로그아웃</Button>
+                        window.location.reload() }} variant="dark" style={{ display: isVisible ? "":"none" }}>로그아웃</Button>
                 </Col>
             </Row>
 
@@ -51,6 +50,9 @@ const Header = () => {
                 </Nav.Item>
                 <Nav.Item>
                     <Nav.Link eventKey="notice" className='text-secondary' onClick={() => navi('/notice')}>공지사항</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                    <Nav.Link eventKey="board" className='text-secondary' onClick={() => navi('/product')}>상품목록</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
                     <Nav.Link eventKey="board" className='text-secondary' onClick={() => navi('/board')}>커뮤니티</Nav.Link>
