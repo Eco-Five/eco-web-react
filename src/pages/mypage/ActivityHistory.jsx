@@ -1,17 +1,20 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Card, Button } from 'react-bootstrap'; // react-bootstrap에서 필요한 컴포넌트 import
+import { FaRegClipboard } from 'react-icons/fa'; // FontAwesome 아이콘 import
 
 const ActivityHistory = () => {
   const [activity, setActivity] = useState(null);
 
   useEffect(() => {
+    // 활동 내역 조회
     const getBoardInfo = async () => {
       try {
-        const response = await axios.post('/api/getBoardInfo');
+        const response = await axios.post('/api/api/getBoardInfo');
         if (response.data.success) {
           setActivity(response.data.data);
         } else {
-          alert('게시판 정보를 불러오는 데 실패했습니다.');
+          alert('활동 내역을 불러오는 데 실패했습니다.');
         }
       } catch (error) {
         console.error('게시판 정보 조회 오류:', error);
@@ -19,24 +22,32 @@ const ActivityHistory = () => {
     };
 
     getBoardInfo();
-  }, []);
+  }, []); // 컴포넌트가 처음 렌더링될 때만 호출
 
-  if (!activity) return <div>Loading...</div>;
+  if (!activity) return <div>Loading...</div>; // 데이터가 없으면 로딩 중 표시
 
   return (
-    <div className="hist-card">
-      <div className="hist-info">
-        <h6 style={{ marginTop: '20px' }}>
-          <b>나의 활동 내역</b>
-        </h6>
-        <div className="hist-item">
-          <p>{activity.board_date.slice(0, 10)}</p>
-          <a href={`/api/board/${activity.board_id}`} style={{ color: '#666' }}>
-            <p>{activity.title}</p>
-          </a>
-          <p>{activity.content}</p>
-        </div>
-      </div>
+    <div className="container mt-4 mb-4">
+      <Card className="hist-card shadow-sm" style={{ maxWidth: '600px', margin: '0 auto' }}>
+        <Card.Body>
+          <div className="d-flex justify-content-between">
+            <h5 className="card-title">
+              <FaRegClipboard style={{ marginRight: '10px' }} />
+              <b>나의 활동 내역</b>
+            </h5>
+          </div>
+          <hr />
+          <div className="hist-item">
+            <p className="text-muted" style={{ fontSize: '0.9rem' }}>
+              {activity.board_date.slice(0, 10)} {/* 날짜 표시 */}
+            </p>
+            <a href={`/api/board/${activity.board_id}`} style={{ color: '#333', textDecoration: 'none' }}>
+              <h6 className="card-subtitle mb-2 text-muted">{activity.title}</h6> {/* 게시물 제목 */}
+            </a>
+            <p className="card-text">{activity.content}</p> {/* 게시물 내용 */}
+          </div>
+        </Card.Body>
+      </Card>
     </div>
   );
 };
