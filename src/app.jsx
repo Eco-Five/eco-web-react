@@ -47,7 +47,7 @@ function App() {
             <Route path="/mypage" element={<MyPage />} />
             <Route path="/payment" element={<Payment />} />
             <Route path="/product" element={<Product />} />
-            <Route path='/question' element={<Question />} />
+            <Route path='/api/question' element={<Question />} />
           </Routes>
         </AppLayout>
       </Suspense>
