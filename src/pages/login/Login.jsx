@@ -96,19 +96,19 @@ const Login = () => {
           </div>
 
           <div className="d-flex justify-content-between">
-            <Link to="/api/signup/google" style={{ width: '100%' }}>
+            <a href="/api/api/signup/google?type=react" style={{ width: '100%' }}>
               <button type="button" className="mt-1 btn w-100" style={{ border: '1px solid rgb(207, 207, 207)', background: 'none', }}>
                 <img src="src\assets\login\google.webp" alt="Google" style={{ maxHeight: '25px', objectFit: 'cover' }} /> Sign up with Google
               </button>
-            </Link>
+            </a>
           </div>
 
           <div className="d-flex justify-content-between">
-            <Link to="/api/auth/naver" style={{ width: '100%' }}>
+            <a href="/api/api/auth/naver?type=react" style={{ width: '100%' }}>
               <button type="button" className="mt-3 btn w-100" style={{ border: '1px solid rgb(207, 207, 207)', background: 'none', }}>
                 <img src="src\assets\login\naverLogo.png" alt="네이버 로그인" style={{ maxHeight: '25px', objectFit: 'cover' }} /> Sign up with Naver
               </button>
-            </Link>
+            </a>
           </div>
         </form>
 
