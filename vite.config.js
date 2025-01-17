@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: "/",
   plugins: [react()],
   resolve: { alias: { '@': '/src' }, // 필요 시 경로 별칭 설정
             extensions: ['.js', '.jsx', '.json'], // 확장자 우선 순위
