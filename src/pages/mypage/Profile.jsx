@@ -24,7 +24,6 @@ const Profile = () => {
 
     getUserInfo();
   }, []);
-
   // 개인정보 수정
   const handleUpdate = async () => {
     const { name, email, phone, address } = userInfo;
@@ -85,7 +84,7 @@ const Profile = () => {
     const file = e.target.files[0]; 
     if (file) {
       const formData = new FormData();
-      formData.append('file', file); 
+      formData.append('fileUpload', file); 
 
       try {
         const response = await axios.post('/api/api/uploadProfilePic', formData, {
@@ -97,7 +96,7 @@ const Profile = () => {
         if (response.data.success) {
           setUserInfo({
             ...userInfo,
-            image_url: response.data.imageUrl, 
+            image_url: `https://localhost:5678${response.data.imageUrl}`, 
           });
           alert('프로필 사진 업로드 성공.');
         } else {
@@ -179,10 +178,10 @@ const Profile = () => {
           </Form>
 
           <div className="d-flex justify-content-center">
-            <Button variant="success" onClick={handleUpdate}>
+            <Button variant="success" onClick={handleUpdate} style={{margin:'10px'}}>
               <FaEdit /> 개인정보 수정
             </Button>
-            <Button variant="danger" onClick={handleDelete}>
+            <Button variant="danger" onClick={handleDelete} style={{margin:'10px'}}>
               <FaTrash /> 회원탈퇴
             </Button>
           </div>

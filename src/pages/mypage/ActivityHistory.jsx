@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Card, Button } from 'react-bootstrap'; // react-bootstrap에서 필요한 컴포넌트 import
-import { FaRegClipboard } from 'react-icons/fa'; // FontAwesome 아이콘 import
+import { Card } from 'react-bootstrap'; 
+import { FaRegClipboard } from 'react-icons/fa'; 
 
 const ActivityHistory = () => {
   const [activity, setActivity] = useState(null);
@@ -22,9 +22,9 @@ const ActivityHistory = () => {
     };
 
     getBoardInfo();
-  }, []); // 컴포넌트가 처음 렌더링될 때만 호출
+  }, []); 
 
-  if (!activity) return <div>Loading...</div>; // 데이터가 없으면 로딩 중 표시
+  if (!activity) return <div>Loading...</div>; 
 
   return (
     <div className="container mt-4 mb-4">
