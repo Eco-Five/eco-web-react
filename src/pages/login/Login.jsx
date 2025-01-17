@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '/src/assets/css/login/Login.css';
 import axios from 'axios';
+import mascot from '../../assets/anyone/eco-mascot.png'; 
 
 
 const Login = () => {
@@ -49,7 +50,7 @@ const Login = () => {
       <div>
         <div className="text-center mb-4">
           <img
-            src="src\assets\anyone\eco-mascot.png"
+            src={mascot}
             alt="로고"
             className="mb-3"
             style={{ height: '100px' }}
@@ -118,7 +119,7 @@ const Login = () => {
           </Link>
         </div>
 
-        <footer className="text-center mt-4 text-secondary small">
+        <div className="text-center mt-4 text-secondary small">
           <div>
             <Link to="#" className="text-decoration-none text-secondary me-2">
               이용약관
@@ -128,7 +129,7 @@ const Login = () => {
             </Link>
           </div>
           <p className="mt-2 mb-0">© 2024 에코라이프. All rights reserved.</p>
-        </footer>
+        </div>
       </div>
     </div>
   );
