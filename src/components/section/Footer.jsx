@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { faTwitter, faFacebook, faInstagram } from "@fortawesome/free-brands-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
+
 const Footer = () => {
     return (
         <>
@@ -16,17 +17,17 @@ const Footer = () => {
                     <div className="col-md-3">
                         <p className="fw-bold">고객센터</p>
                         <ul className="list-unstyled">
-                            <li><Link to="#" >공지사항</Link></li>
-                            <li><Link to="#" >고객문의</Link></li>
-                            <li><Link to="#" >구독상품</Link></li>
+                            <li><Link to="/notice" style={{color: "inherit", textDecoration: "none"}}>공지사항</Link></li>
+                            <li><Link to="/question" style={{color: "inherit", textDecoration: "none"}}>고객문의</Link></li>
+                            <li><Link to="/board" style={{color: "inherit", textDecoration: "none"}}>커뮤니티</Link></li>
                         </ul>
                     </div>
                     <div className="col-md-3">
                         <p className="fw-bold">회사소개</p>
                         <ul className="list-unstyled">
-                            <li><Link to="#" >회사소개</Link></li>
-                            <li><Link to="#" >채용정보</Link></li>
-                            <li><Link to="#" >제휴문의</Link></li>
+                            <li><Link to="/about" style={{color: "inherit", textDecoration: "none"}}>회사소개</Link></li>
+                            <li><Link to="#" style={{color: "inherit", textDecoration: "none"}}>채용정보</Link></li>
+                            <li><Link to="#" style={{color: "inherit", textDecoration: "none"}}>제휴문의</Link></li>
                         </ul>
                     </div>
                     <div className="col-md-3">
