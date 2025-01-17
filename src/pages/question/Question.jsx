@@ -8,8 +8,8 @@ const Question = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [category, setCategory] = useState('all');
 
-    const location = useLocation(); // 현재 위치(URL)
-    const history = useHistory(); // URL을 변경할 수 있는 기능 제공
+    const location = useLocation(); // 현재 위치(URL) 쿼리스트링 가져옴
+    const history = useHistory(); // URL을 변경할 수 있는 기능 제공(push)
 
     // UseEffect : 컴포넌트 초기 렌더링, API 호출
     useEffect(() => {
@@ -90,7 +90,7 @@ const Question = () => {
                     <option value="6">교환/반품</option>
                 </select>
 
-                <a href="/question/write"><button className="btn btn-dark">문의하기</button></a>
+                <a href="/api/question/write"><button className="btn btn-dark">문의하기</button></a>
             </div>
 
             <div className="table-responsive">
@@ -110,7 +110,7 @@ const Question = () => {
                             <tr key={question.inquiry_id}>
                                 <td>{question.inquiry_id}</td>
                                 <td>{question.type_name}</td>
-                                <td><a href={`question/${question.inquiry_id}`}>{question.title}</a></td>
+                                <td><a href={`api/question/${question.inquiry_id}`}>{question.title}</a></td>
                                 <td>{question.name}</td>
                                 <td>{formatDate(question.inquiry_date)}</td>
                                 <td>
