@@ -12,6 +12,7 @@ const Profile = () => {
     const getUserInfo = async () => {
       try {
         const response = await axios.post('/api/api/getUserInfo');
+        console.log(response.data.data);
         if (response.data.success) {
           setUserInfo(response.data.data);
         } else {
@@ -118,7 +119,7 @@ const Profile = () => {
         <Card.Header as="h5">프로필</Card.Header>
         <Card.Body className="text-center">
           <img
-            src={userInfo.image_url}
+            src={`https://localhost:5678${userInfo.image_url}`}
             alt="Profile"
             className="img-fluid rounded-circle"
             style={{ width: '150px', height: '150px', objectFit: 'cover' }}

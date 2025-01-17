@@ -23,7 +23,7 @@
     const fetchProductList = async (query, page = 1, sort) => {
     setLoading(true);
     try {
-        const response = await fetch('/api/naverShop', {
+        const response = await fetch('/api/api/naverShop', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
