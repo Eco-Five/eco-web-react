@@ -16,7 +16,6 @@ const Header = () => {
         const isAuthCheck = async () => {
             try {
                 const response = await axios.get('api/api/protected')
-                console.log(response.data)
                 setIsVisible(response.data.auth)
             } catch (error) {
                 console.error("isAuthCheck error")

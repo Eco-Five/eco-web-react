@@ -29,7 +29,8 @@ const Payment = () => {
             try {
                 const response = await axios.post('api/users/naverPay', {
                     subsPlan: selectedPlan,
-                    subsPrice: selectedPrice
+                    subsPrice: selectedPrice,
+                    server: 'react'
                 })
                 const result = await response.data
                 window.location.href = `https://test-m.pay.naver.com/payments/${result.body.reserveId}`

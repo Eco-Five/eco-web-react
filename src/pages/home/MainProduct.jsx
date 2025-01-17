@@ -36,7 +36,7 @@ const MainProduct = () => {
             </div>
             <Row className=" m-2">
                 {productData.map((item, key) => (
-                    <Col key={key} xs={12} sm={6} md={4} lg={2}>
+                    <Col key={key} xs={12} sm={6} md={6} lg={3}>
                         <Card className="shadow-sm" style={{ height: '500px' }}>
                             <Card.Img variant="top" src={item.image} style={{ height: '70%', objectFit: 'cover' }} alt={item.title} />
                             <Card.Body className="d-flex flex-column">
