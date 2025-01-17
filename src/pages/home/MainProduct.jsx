@@ -17,12 +17,10 @@ const MainProduct = () => {
                     page: 1,
                     sort: "sim"
                 }, {
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
+                    headers: { 'Content-Type': 'application/json' }
                 })
-                setProductData(response.data.list.slice(0, 4))
-                console.log(response.data.list.slice(0, 4))
+                let randomNum = Math.floor(Math.random() * 96)
+                setProductData(response.data.list.slice(randomNum, randomNum + 4))
             } catch (error) {
                 console.error("Error axios main product data: ", error)
             }
@@ -38,7 +36,7 @@ const MainProduct = () => {
             </div>
             <Row className=" m-2">
                 {productData.map((item, key) => (
-                    <Col key={key} xs={12} sm={6} md={2} lg={3}>
+                    <Col key={key} xs={12} sm={6} md={4} lg={2}>
                         <Card className="shadow-sm" style={{ height: '500px' }}>
                             <Card.Img variant="top" src={item.image} style={{ height: '70%', objectFit: 'cover' }} alt={item.title} />
                             <Card.Body className="d-flex flex-column">

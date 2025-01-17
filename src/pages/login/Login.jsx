@@ -7,15 +7,18 @@ import mascot from '../../assets/anyone/eco-mascot.png';
 
 const Login = () => {
   const [loginInfo, setLoginInfo] = useState({ loginEmail: '', loginPwd: '' }); // 로그인 정보 저장
-  const [error, setError] = useState(null); // 에러 상태
 
   // 로그인 API 호출
   const loginCheck = async (info) => {
     try {
-      const response = await axios.post('/api/api/memberLogin', info); // Axios로 POST 요청 //예시 겜아이템 삼
-      const data = await response.data; //작동안하면 되겠어? 해야겠지? 그럼 비동기 처리해야겠지
-      console.log(response.data);
-      window.location.href = '/'; // 성공 시 메인 페이지로 이동
+      const response = await axios.post('/api/api/memberLogin', info); // Axios로 POST 요청
+      
+      if(response.data.result) {
+        alert(response.data.message)
+        window.location.href = '/' // 성공 시 메인 페이지로 이동
+      } else {
+        alert(response.data.message)
+      }
     } catch (err) {
       console.error('로그인 요청 중 오류 발생:', err);
       setError('로그인 요청 중 오류가 발생했습니다. 다시 시도해주세요.');
