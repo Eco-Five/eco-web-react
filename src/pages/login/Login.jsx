@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '/src/assets/css/login/Login.css';
 import axios from 'axios';
+import mascot from '../../assets/anyone/eco-mascot.png'; 
 
 
 const Login = () => {
@@ -11,7 +12,8 @@ const Login = () => {
   // 로그인 API 호출
   const loginCheck = async (info) => {
     try {
-      const response = await axios.post('/api/api/memberLogin', info); // Axios로 POST 요청
+      const response = await axios.post('/api/api/memberLogin', info); // Axios로 POST 요청 //예시 겜아이템 삼
+      const data = await response.data; //작동안하면 되겠어? 해야겠지? 그럼 비동기 처리해야겠지
       console.log(response.data);
       window.location.href = '/'; // 성공 시 메인 페이지로 이동
     } catch (err) {
@@ -45,7 +47,7 @@ const Login = () => {
       <div>
         <div className="text-center mb-4">
           <img
-            src="src\assets\anyone\eco-mascot.png"
+            src={mascot}
             alt="로고"
             className="mb-3"
             style={{ height: '100px' }}
@@ -114,7 +116,7 @@ const Login = () => {
           </Link>
         </div>
 
-        <footer className="text-center mt-4 text-secondary small">
+        <div className="text-center mt-4 text-secondary small">
           <div>
             <Link to="#" className="text-decoration-none text-secondary me-2">
               이용약관
@@ -124,7 +126,7 @@ const Login = () => {
             </Link>
           </div>
           <p className="mt-2 mb-0">© 2024 에코라이프. All rights reserved.</p>
-        </footer>
+        </div>
       </div>
     </div>
   );
