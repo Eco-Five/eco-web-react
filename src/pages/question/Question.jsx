@@ -26,7 +26,7 @@ const Question = () => {
             // /api/question API를 호출해 가져온 데이터 questions, totalPages 상태에 저장
             const fetchQuestions = async () => {
                 try {
-                    const response = await fetch(`/api/api/question?page=${page}&category=${categoryParam}`);
+                    const response = await fetch(`api/question?page=${page}&category=${categoryParam}`);
                     const data = await response.json(); // JSON 데이터 받기
                     setQuestions(data.questions);
                     setTotalPages(data.totalPages);
