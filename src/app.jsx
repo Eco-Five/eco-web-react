@@ -11,6 +11,7 @@ const MyPage = lazy(() => import("./pages/mypage/MyPage"))
 const Login = lazy(() => import("./pages/login/Login"))
 const Find = lazy(() => import("./pages/find/Find"))
 const Register = lazy(() => import("./pages/register/Register"))
+const Game = lazy(() => import("./pages/reactgame/Game"))
 
 
 //============= Header와 Footer를 제외한 레이아웃===============//
@@ -31,7 +32,6 @@ function AppLayout({ children }) {
 //============= Header와 Footer를 제외한 레이아웃===============//
 
 
-
 function App() {
   return (
     <BrowserRouter>
@@ -46,6 +46,7 @@ function App() {
             <Route path="/payment" element={<Payment />} />
             <Route path="/payment/result" element={<PaymentResult />} />
             <Route path="/mypage" element={<MyPage />} />
+            <Route path="/game" element={<Game />} />
           </Routes>
         </AppLayout>
       </Suspense>

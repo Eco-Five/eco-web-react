@@ -60,13 +60,18 @@ const Header = () => {
                     <Nav.Link eventKey="question" className='text-secondary' onClick={() => navi('/question')}>고객문의</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                    <Nav.Link eventKey="payment" className='text-secondary' onClick={() => navi('/payment')} 
+                    <Nav.Link eventKey="payment" className='text-secondary' onClick={() => navi('/payment')}
                         style={{ display: isVisible ? "":"none" }}>구독
                     </Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                    <Nav.Link eventKey="mypage" className='text-secondary' onClick={() => navi('/mypage')} 
+                    <Nav.Link eventKey="mypage" className='text-secondary' onClick={() => navi('/mypage')}
                         style={{ display: isVisible ? "":"none" }}>마이페이지
+                    </Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                    <Nav.Link eventKey="game" className='text-secondary' onClick={() => navi('/game')}
+                        style={{ display: isVisible ? "":"none" }}>ReactQuiz!
                     </Nav.Link>
                 </Nav.Item>
             </Nav>
