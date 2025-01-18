@@ -1,7 +1,7 @@
 import axios from 'axios'
 import 'react'
 import { useEffect, useState } from 'react';
-import { Button, Card } from 'react-bootstrap'
+import { Button, Card, Col } from 'react-bootstrap'
 
 import { faYoutube } from "@fortawesome/free-brands-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -27,12 +27,12 @@ const Youtube = () => {
 
     return (
         <>
-            <div className='ms-3 mb-3 mt-3' style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>
+            <div className='ms-3 mt-3' style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>
                 <FontAwesomeIcon icon={faYoutube} style={{ color: 'red' }}/> 유튜브 추천영상
             </div>
-            <div className='d-flex'>
+            <div className='d-flex justify-content-between'>
                 {youtubeData.map((item, key) => (
-                    <Card key={key} className='m-2' style={{ width: '30rem' }}>
+                    <Card key={key} className='m-3' style={{ width: '33%' }}>
                         <Card.Img variant="top" src={item.snippet.thumbnails.medium.url} 
                             onClick={() => window.open("https://www.youtube.com/watch?v=" + item.id.videoId, '_blank')} />
                         <Card.Body>

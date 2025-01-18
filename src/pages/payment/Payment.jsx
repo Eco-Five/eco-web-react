@@ -1,7 +1,11 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import { useSearchParams } from 'react-router-dom'
 
 const Payment = () => {
+    const [ searchParams ] = useSearchParams()
+    if (searchParams.get("message") !== null) { alert(searchParams.get("message")) }
+    
     /************************************ useState & dataSet **************************************/
     const [selectedPlan, setSelectedPlan] = useState('선택없음')
     const [selectedPrice, setSelectedPrice] = useState(0)

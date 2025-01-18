@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link, useLocation, useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from 'axios';
@@ -29,7 +29,7 @@ const PaymentResult = () => {
             <div className="d-flex">
                 {iconRander()}
                 <div>
-                    <h2>{paymentResult.resultCode}</h2>
+                    {paymentResult.resultCode}
                     <p className="text-muted">주문해 주셔서 감사합니다.</p>
                 </div>
             </div>
@@ -71,7 +71,7 @@ const PaymentResult = () => {
                 <Link to="/">
                     <button className="btn btn-outline-secondary">홈으로</button>
                 </Link>
-                <a href={`/users/payment/cancel?paymentId=${paymentResult.paymentId}&subsPrice=${paymentResult.subsPrice}`}>
+                <a href={`/api/users/payment/cancel?paymentId=${paymentResult.paymentId}&subsPrice=${paymentResult.subsPrice}&server=react`}>
                     <button className="btn btn-success">결제취소</button>
                 </a>
             </div>

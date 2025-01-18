@@ -27,7 +27,7 @@ const Header = () => {
 
     return (
         <>
-            <Row className='align-items-center mt-2 mb-2'>
+            <Row className='align-items-center mt-2 mb-2' style={{ weight: "100vh" }}>
                 <Col></Col>
                 <Col className='text-center'>
                     <Card.Title className="display-2 fw-bold fs-2" style={{ letterSpacing: "3px" }}>

@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react'
+import { lazy, Suspense, useEffect, useState } from 'react'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 
 const Header = lazy(() => import("./components/section/Header"))
@@ -15,18 +15,18 @@ const Register = lazy(() => import("./pages/register/Register"))
 
 //============= Header와 Footer를 제외한 레이아웃===============//
 function AppLayout({ children }) {
-  const location = useLocation();
-
-  // FindAuth 페이지에서 Header와 Footer를 제외
-  const excludeHeaderFooter = location.pathname === "/login/find";
+  const location = useLocation()
+  
+  // 페이지 변경 시, 화면 렌더링 상태값 변경
+  const hideHeaderFooter = location.pathname === "/login/find"
 
   return (
     <>
-      {!excludeHeaderFooter && <Header />}
-      <>{children}</>
-      {!excludeHeaderFooter && <Footer />}
+      {hideHeaderFooter ? null : <Header />}
+      <div>{children}</div>
+      {hideHeaderFooter ? null : <Footer />}
     </>
-  );
+  )
 }
 //============= Header와 Footer를 제외한 레이아웃===============//
 
