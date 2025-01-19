@@ -12,10 +12,10 @@ const Question = () => {
     const navigate = useNavigate(); // URL 변경
 
     // API 호출 함수
-    const fetchQuestions = async (page, categoryParam) => {
+    const fetchQuestions = async (page, category) => {
         try {
             setError(null);
-            const response = await fetch(`https://localhost:5678/api/question?page=${page}&category=${categoryParam}`);
+            const response = await fetch(`https://localhost:5678/api/question?page=${page}&category=${category}`);
             if (!response.ok) {
                 const errorText = await response.text();
                 throw new Error(`API 요청 실패: ${response.status} ${response.statusText} - ${errorText}`);
@@ -33,12 +33,12 @@ const Question = () => {
     useEffect(() => {
         const queryParams = new URLSearchParams(location.search);
         const page = parseInt(queryParams.get('page'), 10) || 1;
-        const categoryParam = queryParams.get('category') || 'all';
+        const category = queryParams.get('category') || 'all';
 
         setCurrentPage(page);
-        setCategory(categoryParam);
+        setCategory(category);
 
-        fetchQuestions(page, categoryParam); // 데이터 가져오기
+        fetchQuestions(page, category); // 데이터 가져오기
     }, [location.search]);
 
     // 카테고리 변경 핸들러

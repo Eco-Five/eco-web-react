@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import Header from './components/section/Header';
 import Footer from './components/section/Footer';
 import About from './pages/home/About';
+import Board from './pages/board/Board';
 
 const Home = lazy(() => import("./pages/home/Home"));
 const Login = lazy(() => import("./pages/login/Login"));
@@ -50,6 +51,7 @@ function App() {
             <Route path="/payment" element={<Payment />} />
             <Route path="/register" element={<Register />} />
             <Route path="/product" element={<Product />} />
+            <Route path="/board" element={<Board />} />
             <Route path='/question' element={<Question />} />
           </Routes>
         </AppLayout>
