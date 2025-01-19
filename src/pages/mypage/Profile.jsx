@@ -63,7 +63,7 @@ const Profile = () => {
         }
       } catch (error) {
         console.error('회원탈퇴 오류:', error);
-        alert('서버 오류.');
+        alert('나의 활동내역이 존재합니다.');
       }
     }
   };
@@ -100,6 +100,7 @@ const Profile = () => {
             image_url: `https://localhost:5678${response.data.imageUrl}`, 
           });
           alert('프로필 사진 업로드 성공.');
+          window.location.href = '/';
         } else {
           alert('프로필 사진 업로드 실패.');
         }
@@ -116,7 +117,7 @@ const Profile = () => {
     <div className="container mt-4">
       {/* 프로필 사진 카드 */}
       <Card className="mb-4" style={{ maxWidth: '600px', margin: '0 auto' }}>
-        <Card.Header as="h5">프로필</Card.Header>
+        <Card.Header as="h5"><b>프로필</b></Card.Header>
         <Card.Body className="text-center">
           <img
             src={`https://localhost:5678${userInfo.image_url}`}
@@ -136,9 +137,9 @@ const Profile = () => {
         </Card.Body>
       </Card>
 
-      {/* 개인정보 수정 카드 */}
+      {/* 개인정보 카드 */}
       <Card className="mb-4" style={{ maxWidth: '600px', margin: '0 auto' }}>
-        <Card.Header as="h5">개인정보</Card.Header>
+        <Card.Header as="h5"><b>개인정보</b></Card.Header>
         <Card.Body>
           <Form>
             <Form.Group controlId="formName" className="mb-3"> 
