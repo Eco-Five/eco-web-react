@@ -1,6 +1,11 @@
 import React from 'react'
 import GameState from './GameState'
 import GameEffect from './GameEffect'
+import GameRef from './GameRef'
+import GameRef2 from './GameRef2'
+import GameMemo from './GameMemo'
+import GameCallback from './GameCallback'
+import GameReducer from './GameReducer'
 
 const Game = () => {
     return (
@@ -11,6 +16,14 @@ const Game = () => {
             <GameEffect />
             <hr />
             <GameRef />
+            <hr />
+            <GameRef2 />
+            <hr />
+            <GameMemo />
+            <hr />
+            <GameCallback />
+            <hr />
+            <GameReducer />
         </>
     )
 }
