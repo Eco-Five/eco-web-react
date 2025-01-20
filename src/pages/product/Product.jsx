@@ -18,14 +18,6 @@ const Product = () => {
         fetchProductList(query, currentPage, sort);
     }, [currentPage, sort]); 
 
-    const handleSearch = () => {
-        if (query.trim() === "") {
-            setQuery('친환경');
-        } else {
-            fetchProductList(query, 1, sort); 
-        }
-    };
-
     const fetchProductList = async (query, page = 1, sort) => {
         setLoading(true);
         try {
@@ -52,15 +44,23 @@ const Product = () => {
         }
     };
 
-    const handleSortChange = (newSort) => {
-        setSort(newSort);
-        fetchProductList(query, 1, newSort); 
+    const handleSearch = () => {
+        if (query.trim() === "") {
+            setQuery('친환경');
+        } else {
+            fetchProductList(query, 1, sort); 
+        }
     };
 
     const handleEnterKey = (event) => {
         if (event.keyCode === 13) {
             handleSearch();
         }
+    };
+
+    const handleSortChange = (newSort) => {
+        setSort(newSort);
+        fetchProductList(query, 1, newSort); 
     };
 
     const paginatedItems = () => {

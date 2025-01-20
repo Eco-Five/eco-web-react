@@ -19,9 +19,7 @@ const ItemList = ({ items, loading }) => {
     
 
     const handleImageClick = (index, image, link) => {
-        // 이미지 클릭 시 모달 열기
         setModalIndex(index); 
-        // 최근 본 상품에 추가
         addToRecentViewed(image, link);
     };
 
@@ -60,20 +58,20 @@ const ItemList = ({ items, loading }) => {
                                         alt={item.title}
                                         className="img-fluid"
                                         style={{ cursor: 'pointer', width: '100%' }}
-                                        onClick={() => handleImageClick(index, item.image, item.link)} // 이미지 클릭 시 최근 본 상품에 추가
+                                        onClick={() => handleImageClick(index, item.image, item.link)}
                                     />
                                 </Card.Header>
                                 <Card.Body>
-                                    <Card.Title className="ellipsis" style={{ fontSize: '1vw' }}>{cleanTitle(item.title)}</Card.Title>
+                                    <Card.Title className="ellipsis" style={{ fontSize: '0.7vw' }}>{cleanTitle(item.title)}</Card.Title>
                                     <Card.Text>
                                         <b>{formatPrice(item.lprice)}</b>
                                     </Card.Text>
                                     <a href={item.link}>
-                                        <Button variant="dark" size="sm" style={{ minWidth: '10px', fontSize: '0.7vw', marginRight: '5px' }}>
+                                        <Button variant="dark" size="sm" style={{ minWidth: '10px', fontSize: '0.5vw', marginRight: '5px' }}>
                                             네이버쇼핑
                                         </Button>
                                     </a>
-                                    <Button variant="dark" size="sm" style={{ minWidth: '10px', fontSize: '0.7vw' }}>
+                                    <Button variant="dark" size="sm" style={{ minWidth: '10px', fontSize: '0.5vw' }}>
                                         에코백담기
                                     </Button>
                                 </Card.Body>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FaSearch, FaHistory } from 'react-icons/fa';
 import { Button } from 'react-bootstrap';
 
-const ItemSearch = ({ query, setQuery, handleSearch }) => {
+const ItemSearch = ({ query, setQuery, handleSearch, handleEnterKey }) => {
     const recentViewedContainerStyle = {
         border: '1px solid #e0e0e0',
         position: 'fixed',
@@ -49,7 +49,7 @@ const ItemSearch = ({ query, setQuery, handleSearch }) => {
                     placeholder="제품 검색"
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
-                    onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
+                    onKeyDown={(e) => handleEnterKey(e)}
                 />
                 {/* 검색 버튼 */}
                 <Button variant="outline-dark" onClick={handleSearch} className="search-btn">

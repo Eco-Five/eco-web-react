@@ -20,7 +20,7 @@ const ItemPage = ({ currentPage, totalPages, setCurrentPage, fetchProductList })
                 onClick={() => handlePageChange('prev')}
                 disabled={currentPage === 1}
             >
-                <FaChevronLeft /> {/* 이전 버튼 아이콘 */}
+                <FaChevronLeft /> {/* 이전 버튼 */}
             </button>
             <span id="page" className="px-3">
                 {currentPage}/{totalPages}
@@ -30,7 +30,7 @@ const ItemPage = ({ currentPage, totalPages, setCurrentPage, fetchProductList })
                 onClick={() => handlePageChange('next')}
                 disabled={currentPage === totalPages}
             >
-                <FaChevronRight /> {/* 다음 버튼 아이콘 */}
+                <FaChevronRight /> {/* 다음 버튼 */}
             </button>
         </div>
     );
