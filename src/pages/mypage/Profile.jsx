@@ -63,7 +63,7 @@ const Profile = () => {
         }
       } catch (error) {
         console.error('회원탈퇴 오류:', error);
-        alert('활동내역 삭제가 필요합니다.');
+        alert('서버 오류.');
       }
     }
   };

@@ -16,7 +16,6 @@ const ItemList = ({ items, loading }) => {
         }
         return cleanedTitle;
     };
-    
 
     const handleImageClick = (index, image, link) => {
         setModalIndex(index); 
@@ -71,7 +70,7 @@ const ItemList = ({ items, loading }) => {
                                             네이버쇼핑
                                         </Button>
                                     </a>
-                                    <Button variant="dark" size="sm" style={{ minWidth: '10px', fontSize: '0.5vw' }}>
+                                    <Button variant="dark" size="sm" style={{ minWidth: '10px', fontSize: '0.5vw' }} >
                                         에코백담기
                                     </Button>
                                 </Card.Body>
