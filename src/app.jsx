@@ -6,6 +6,10 @@ import Footer from './components/section/Footer';
 import About from './pages/home/About';
 import MyPage from "./pages/mypage/MyPage";
 import Payment from './pages/payment/Payment';
+import NoticeBoard from './pages/notice/NoticeBoard';
+import ReadNotice from './pages/notice/ReadNotice';
+import UpdateNotice from './pages/notice/UpdateNotice';
+import WriteNotice from './pages/notice/WriteNotice';
 
 const Home = lazy(() => import("./pages/home/Home"));
 const Login = lazy(() => import("./pages/login/Login"));
@@ -45,6 +49,10 @@ function App() {
             <Route path="/mypage" element={<MyPage />} />
             <Route path="/payment" element={<Payment />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/notice" element={<NoticeBoard />} />
+            <Route path="/notice/read/:id" element={<ReadNotice />} />
+            <Route path="/notice/update/:id" element={<UpdateNotice />} />
+            <Route path="/notice/write" element={<WriteNotice />} />
           </Routes>
         </AppLayout>
       </Suspense>
@@ -53,4 +61,4 @@ function App() {
 }
 
 
-export default App
+export default App;
