@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { Card, Button, Form } from 'react-bootstrap';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 
-const Profile = () => {
+const MyProfile = () => {
   const [userInfo, setUserInfo] = useState(null);
 
   useEffect(() => {
@@ -183,7 +183,7 @@ const Profile = () => {
             <Button variant="success" onClick={handleUpdate} style={{margin:'10px'}}>
               <FaEdit /> 개인정보 수정
             </Button>
-            <Button variant="danger" onClick={handleDelete} style={{margin:'10px'}}>
+            <Button variant="success" onClick={handleDelete} style={{margin:'10px'}}>
               <FaTrash /> 회원탈퇴
             </Button>
           </div>
@@ -193,4 +193,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default MyProfile;

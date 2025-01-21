@@ -71,9 +71,7 @@ const ItemSearch = ({ query, setQuery, handleSearch, handleEnterKey }) => {
                         {recentItems.map((item, index) => (
                             <div className="col-md-3" key={index} style={{ width: '100px' }}>
                                 <div className="category-card" style={{ marginBottom: '20px' }}>
-                                    <a href={item.link}>
-                                        <img src={item.image} alt="최근 본 상품" className="img-fluid" />
-                                    </a>
+                                        <img src={item.image} alt="최근 본 상품" onClick={() => window.open(item.link, '_blank')} className="img-fluid" />
                                 </div>
                             </div>
                         ))}

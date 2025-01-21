@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Card } from 'react-bootstrap'; 
 import { FaRegClipboard } from 'react-icons/fa'; 
 
-const ActivityHistory = () => {
+const MyBoard = () => {
   const [activity, setActivity] = useState(null);
 
   useEffect(() => {
@@ -52,4 +52,4 @@ const ActivityHistory = () => {
   );
 };
 
-export default ActivityHistory;
+export default MyBoard;

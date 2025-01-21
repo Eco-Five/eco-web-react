@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Card, Button } from 'react-bootstrap'; 
+import { Card, Button, Toast, ToastContainer } from 'react-bootstrap'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const ItemList = ({ items, loading }) => {
     const [modalIndex, setModalIndex] = useState(null);
+    const [toastMessage, setToastMessage] = useState(null); 
 
     const formatPrice = (price) => {
         return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '원';
@@ -42,6 +43,30 @@ const ItemList = ({ items, loading }) => {
         }
     };
 
+    // 장바구니 추가
+    const addToCart = async (title, lprice, image) => {
+        try {
+            const response = await fetch('/api/api/insertCart', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ title, lprice, image }),
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                setToastMessage({ type: 'success', message: result.message }); 
+            } else {
+                setToastMessage({ type: 'danger', message: result.message });  
+            }
+        } catch (error) {
+            console.error('Error adding to cart:', error);
+            setToastMessage({ type: 'error', message: '장바구니 추가 중 오류가 발생했습니다.' }); 
+        }
+    };
+
     return (
         <div className="product-list my-4">
             {loading ? (
@@ -65,13 +90,11 @@ const ItemList = ({ items, loading }) => {
                                     <Card.Text>
                                         <b>{formatPrice(item.lprice)}</b>
                                     </Card.Text>
-                                    <a href={item.link}>
-                                        <Button variant="dark" size="sm" style={{ minWidth: '10px', fontSize: '0.5vw', marginRight: '5px' }}>
+                                        <Button variant="success" onClick={() => window.open(item.link, '_blank')} size="sm" style={{ minWidth: '10px', fontSize: '0.5vw', marginRight: '5px' }}>
                                             네이버쇼핑
                                         </Button>
-                                    </a>
-                                    <Button variant="dark" size="sm" style={{ minWidth: '10px', fontSize: '0.5vw' }} >
-                                        에코백담기
+                                    <Button variant="success" size="sm" onClick={() => addToCart(item.title, item.lprice, item.image)} style={{ minWidth: '10px', fontSize: '0.5vw' }}>
+                                        장바구니
                                     </Button>
                                 </Card.Body>
                             </Card>
@@ -110,6 +133,14 @@ const ItemList = ({ items, loading }) => {
                         </div>
                     </div>
                 </div>
+            )}
+
+            {toastMessage && (
+                <ToastContainer position="bottom-center" className="p-3">
+                    <Toast bg={toastMessage.type} onClose={() => setToastMessage(null)} autohide delay={3000}>
+                        <Toast.Body>{toastMessage.message}</Toast.Body>
+                    </Toast>
+                </ToastContainer>
             )}
         </div>
     );

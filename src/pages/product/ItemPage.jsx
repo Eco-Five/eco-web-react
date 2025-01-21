@@ -16,7 +16,7 @@ const ItemPage = ({ currentPage, totalPages, setCurrentPage, fetchProductList })
     return (
         <div className="text-center mt-2" style={{padding:'30px'}}>
             <button
-                className="btn btn-dark btn-sm px-5"
+                className="btn btn-success btn-sm px-5"
                 onClick={() => handlePageChange('prev')}
                 disabled={currentPage === 1}
             >
@@ -26,7 +26,7 @@ const ItemPage = ({ currentPage, totalPages, setCurrentPage, fetchProductList })
                 {currentPage}/{totalPages}
             </span>
             <button
-                className="btn btn-dark btn-sm px-5"
+                className="btn btn-success btn-sm px-5"
                 onClick={() => handlePageChange('next')}
                 disabled={currentPage === totalPages}
             >

@@ -1,13 +1,15 @@
 import 'react'
-import Profile from './Profile';
-import ActivityHistory from './ActivityHistory';
+import MyProfile from './MyProfile';
+import MyBoard from './MyBoard';
+import MyCart from './MyCart';
 
 const MyPage = () => {
 
     return (
         <>
-        <Profile />
-        <ActivityHistory />
+        <MyProfile />
+        <MyCart />
+        <MyBoard />
         </>
     )
 }
