@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import '/src/assets/css/board/Board.css'
 
 const Board = ({ user, initialCategory = 'all', initialPage = 1 }) => {
     const navigate = useNavigate();
@@ -80,8 +81,8 @@ const Board = ({ user, initialCategory = 'all', initialPage = 1 }) => {
                     {/* 커뮤니티 글 목록 */}
                     <div id="board-list" className="list-group">
                         {boards.map((board) => (
-                            <a key={board.board_id} href={`/api/board/${board.board_id}`} className="list-group-item list-group-item-action d-flex gap-3 py-3">
-                                <img src={board.image_url || '/images/anyone/eco-mascot.png'} alt="thumbnail" className="rounded" />
+                            <a key={board.board_id} href={`/board/${board.board_id}`} className="list-group-item list-group-item-action d-flex gap-3 py-3">
+                                <img src={board.image_url || '/src/assets/anyone/eco-mascot.png'} alt="thumbnail" className="rounded" />
                                 <div className="w-100">
                                     <h5 className="mb-1">
                                         <span className={`badge rounded-pill ${board.type_name === '친환경뉴스' ? 'bg-success' : board.type_name === '친환경팁' ? 'bg-warning' : 'bg-secondary'}`}>
@@ -127,7 +128,7 @@ const Board = ({ user, initialCategory = 'all', initialPage = 1 }) => {
                         {populars.map((popular, index) => (
                             <li key={popular.board_id} className="list-group-item d-flex justify-content-between align-items-start">
                                 <div className="ms-2 me-auto">
-                                    <a href={`/api/board/${popular.board_id}`} className="popularlink">
+                                    <a href={`/board/${popular.board_id}`} className="popularlink">
                                         {index + 1}. {popular.title}
                                     </a>
                                 </div>

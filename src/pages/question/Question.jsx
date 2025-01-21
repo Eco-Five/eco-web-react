@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import '/src/assets/css/question/Question.css'
 
 const Question = () => {
     const [questions, setQuestions] = useState([]);

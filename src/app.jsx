@@ -4,7 +4,6 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import Header from './components/section/Header';
 import Footer from './components/section/Footer';
 import About from './pages/home/About';
-import Board from './pages/board/Board';
 
 const Home = lazy(() => import("./pages/home/Home"));
 const Login = lazy(() => import("./pages/login/Login"));
@@ -14,7 +13,10 @@ const Register = lazy(() => import("./pages/register/Register"));
 const MyPage = lazy(() => import("./pages/mypage/MyPage"));
 const Payment = lazy(() => import("./pages/payment/Payment"));
 const Product = lazy(() => import("./pages/product/Product"));
+const Board = lazy(() => import("./pages/board/Board"));
+const BoardDetail = lazy(() => import("./pages/board/BoardDetail"));
 const Question = lazy(() => import("./pages/question/Question"))
+const QuestionDetail = lazy(() => import("./pages/question/QuestionDetail"))
 
 //============= Header와 Footer를 제외한 레이아웃===============//
 function AppLayout({ children }) {
@@ -52,7 +54,9 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/product" element={<Product />} />
             <Route path="/board" element={<Board />} />
+            <Route path='/board/:b_no' element={<BoardDetail />} />
             <Route path='/question' element={<Question />} />
+            <Route path='/question/:q_no' element={<QuestionDetail />} />
           </Routes>
         </AppLayout>
       </Suspense>
