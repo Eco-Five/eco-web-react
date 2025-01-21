@@ -19,7 +19,7 @@ const Header = () => {
                 setIsVisible(response.data.auth)
             } catch (error) {
                 console.error("isAuthCheck error")
-                setIsVisible(error.response.data.user)
+                setIsVisible(error.response.data.auth)
             }
         }
         isAuthCheck()

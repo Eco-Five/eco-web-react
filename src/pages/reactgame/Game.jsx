@@ -6,6 +6,7 @@ import GameRef2 from './GameRef2'
 import GameMemo from './GameMemo'
 import GameCallback from './GameCallback'
 import GameReducer from './GameReducer'
+import GameRedux from './GameRedux'
 
 const Game = () => {
     return (
@@ -24,6 +25,8 @@ const Game = () => {
             <GameCallback />
             <hr />
             <GameReducer />
+            <hr />
+            <GameRedux />
         </>
     )
 }
