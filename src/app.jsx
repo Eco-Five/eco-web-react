@@ -47,6 +47,8 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/login/find" element={<Find />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/board" element={<Board />} />
+            <Route path="/board/write" element={<BoardWrite />} />
             <Route path="/payment" element={<Payment />} />
             <Route path="/product" element={<Product />} />
             <Route path='/question' element={<Question />} />
