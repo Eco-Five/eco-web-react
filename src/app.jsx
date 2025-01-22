@@ -45,10 +45,10 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/login/find" element={<Find />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/product" element={<Product />} />
             <Route path="/board" element={<Board />} />
             <Route path="/board/write" element={<BoardWrite />} />
             <Route path='/question' element={<Question />} />
+
             <Route path="/payment" element={<Payment />} />
             <Route path="/payment/result" element={<PaymentResult />} />
             <Route path="/mypage" element={<MyPage />} />
