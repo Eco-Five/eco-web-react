@@ -55,20 +55,39 @@ if (direction === 'next' && currentPage < Math.ceil(cartItems.length / itemsPerP
 }
 };
 
+// 아이템 삭제 핸들러
+const handleDeleteItem = async (cartId) => {
+try {
+    const response = await axios.post('/api/api/deleteCart', { cart_id: cartId });
+    if (response.data.success) {
+    // 삭제 성공 시 장바구니 데이터 업데이트
+    setCartItems(cartItems.filter(item => item.cart_id !== cartId));
+    alert('상품이 삭제되었습니다.');
+    window.location.href = '/mypage';
+    } else {
+    alert('상품 삭제에 실패했습니다.');
+    }
+} catch (error) {
+    console.error('상품 삭제 오류:', error);
+    alert('상품 삭제에 오류가 발생했습니다.');
+}
+};
+
 return (
 <div className="container mt-4 mb-4">
     <div className="row">
     <div className="col-12">
         <Card className="shadow-sm" style={{ maxWidth: '600px', margin: '0 auto' }}>
-        <Card.Header className="d-flex justify-content-between align-items-center">
-            <h5>
-            <FaShoppingCart style={{ marginRight: '10px' }} />
-            <b>장바구니</b>
-            </h5>
-        </Card.Header>
         <Card.Body>
+            <div className="d-flex justify-content-between align-items-center">
+            <h5>
+                <FaShoppingCart style={{ marginRight: '10px' }} />
+                <b>장바구니</b>
+            </h5>
+            </div>
+            <hr />
             <div className="row">
-            {currentItems.length > 0 ? (
+            {cartItems.length > 0 ? (
                 currentItems.map((item) => (
                 <div className="col-12 mb-3" key={item.cart_id}>
                     <Card className="shadow-sm">
@@ -91,7 +110,12 @@ return (
                             </p>
                         </div>
                         </div>
-                        <Button variant="success" size="sm" style={{ position: 'absolute', bottom: '10px', right: '10px'}}>
+                        <Button
+                        variant="success"
+                        size="sm"
+                        style={{ position: 'absolute', bottom: '10px', right: '10px'}}
+                        onClick={() => handleDeleteItem(item.cart_id)}
+                        >
                         <FaTimes />
                         </Button>
                     </Card.Body>

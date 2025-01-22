@@ -53,7 +53,7 @@ const MyProfile = () => {
     if (window.confirm('회원탈퇴하시겠습니까?')) {
       try {
         const response = await axios.post('/api/api/deleteUser');
-
+        console.log(response);
         if (response.data.success) {
           await logoutUser();
           alert('회원탈퇴 완료.');
@@ -111,7 +111,7 @@ const MyProfile = () => {
     }
   };
 
-  if (!userInfo) return <div>Loading...</div>;
+  if (!userInfo) return <div style={{textAlign: 'center'}}>개인정보가 없습니다.</div>;
 
   return (
     <div className="container mt-4">
@@ -119,8 +119,11 @@ const MyProfile = () => {
       <Card className="mb-4" style={{ maxWidth: '600px', margin: '0 auto' }}>
         <Card.Header as="h5"><b>프로필</b></Card.Header>
         <Card.Body className="text-center">
+
           <img
-            src={`https://localhost:5678${userInfo.image_url}`}
+            src={userInfo.image_url 
+              ? `https://localhost:5678${userInfo.image_url}` 
+              : 'https://placehold.co/250x200'}
             alt="Profile"
             className="img-fluid rounded-circle"
             style={{ width: '150px', height: '150px', objectFit: 'cover' }}
