@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '/src/assets/css/login/Login.css';
 import axios from 'axios';
-import mascot from '../../assets/anyone/eco-mascot.png'; 
+import mascot from '../../assets/anyone/eco-mascot.png';
+import { useNavigate } from 'react-router-dom'; 
 
 
 const Login = () => {
+  const navigate = useNavigate();
   const [loginInfo, setLoginInfo] = useState({ loginEmail: '', loginPwd: '' }); // 로그인 정보 저장
 
   // 로그인 API 호출
@@ -15,7 +17,8 @@ const Login = () => {
       
       if(response.data.result) {
         alert(response.data.message)
-        window.location.href = '/' // 성공 시 메인 페이지로 이동
+        navigate('/'); // 로그인 정보 가져오지 못함
+        window.location
       } else {
         alert(response.data.message)
       }

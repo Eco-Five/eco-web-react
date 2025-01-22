@@ -12,6 +12,7 @@ const Login = lazy(() => import("./pages/login/Login"))
 const Find = lazy(() => import("./pages/find/Find"))
 const Register = lazy(() => import("./pages/register/Register"))
 const Game = lazy(() => import("./pages/reactgame/Game"))
+const Hoon = lazy(() => import("./pages/hoonquiz/Hoon"))
 
 
 //============= Header와 Footer를 제외한 레이아웃===============//
@@ -47,6 +48,7 @@ function App() {
             <Route path="/payment/result" element={<PaymentResult />} />
             <Route path="/mypage" element={<MyPage />} />
             <Route path="/game" element={<Game />} />
+            <Route path="/hoon" element={<Hoon />} />
           </Routes>
         </AppLayout>
       </Suspense>

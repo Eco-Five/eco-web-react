@@ -74,6 +74,11 @@ const Header = () => {
                         style={{ display: isVisible ? "":"none" }}>ReactQuiz!
                     </Nav.Link>
                 </Nav.Item>
+                <Nav.Item>
+                    <Nav.Link eventKey="hoon" className='text-secondary' onClick={() => navi('/hoon')}
+                        style={{ display: isVisible ? "":"none" }}>HoonQuiz
+                    </Nav.Link>
+                </Nav.Item>
             </Nav>
 
             <div style={{ borderBottom: "1px solid #ddd" }} ></div>
