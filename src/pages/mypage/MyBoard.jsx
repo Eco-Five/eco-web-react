@@ -51,7 +51,7 @@ const Myboard = () => {
           <div className="d-flex justify-content-between align-items-center">
             <h5 className="card-title">
               <FaRegClipboard style={{ marginRight: '10px' }} />
-              <b>게시판</b>
+              <b>커뮤니티</b>
             </h5>
           </div>
           <hr />
