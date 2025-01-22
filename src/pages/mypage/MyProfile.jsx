@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { Card, Button, Form } from 'react-bootstrap';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 
-const Profile = () => {
+const MyProfile = () => {
   const [userInfo, setUserInfo] = useState(null);
 
   useEffect(() => {
@@ -12,6 +12,7 @@ const Profile = () => {
     const getUserInfo = async () => {
       try {
         const response = await axios.post('/api/api/getUserInfo');
+        console.log(response.data.data);
         if (response.data.success) {
           setUserInfo(response.data.data);
         } else {
@@ -52,7 +53,7 @@ const Profile = () => {
     if (window.confirm('회원탈퇴하시겠습니까?')) {
       try {
         const response = await axios.post('/api/api/deleteUser');
-
+        console.log(response);
         if (response.data.success) {
           await logoutUser();
           alert('회원탈퇴 완료.');
@@ -99,6 +100,7 @@ const Profile = () => {
             image_url: `https://localhost:5678${response.data.imageUrl}`, 
           });
           alert('프로필 사진 업로드 성공.');
+          window.location.href = '/';
         } else {
           alert('프로필 사진 업로드 실패.');
         }
@@ -109,16 +111,19 @@ const Profile = () => {
     }
   };
 
-  if (!userInfo) return <div>Loading...</div>;
+  if (!userInfo) return <div style={{textAlign: 'center'}}>개인정보가 없습니다.</div>;
 
   return (
     <div className="container mt-4">
       {/* 프로필 사진 카드 */}
       <Card className="mb-4" style={{ maxWidth: '600px', margin: '0 auto' }}>
-        <Card.Header as="h5">프로필</Card.Header>
+        <Card.Header as="h5"><b>프로필</b></Card.Header>
         <Card.Body className="text-center">
+
           <img
-            src={userInfo.image_url}
+            src={userInfo.image_url 
+              ? `https://localhost:5678${userInfo.image_url}` 
+              : 'https://placehold.co/250x200'}
             alt="Profile"
             className="img-fluid rounded-circle"
             style={{ width: '150px', height: '150px', objectFit: 'cover' }}
@@ -135,9 +140,9 @@ const Profile = () => {
         </Card.Body>
       </Card>
 
-      {/* 개인정보 수정 카드 */}
+      {/* 개인정보 카드 */}
       <Card className="mb-4" style={{ maxWidth: '600px', margin: '0 auto' }}>
-        <Card.Header as="h5">개인정보</Card.Header>
+        <Card.Header as="h5"><b>개인정보</b></Card.Header>
         <Card.Body>
           <Form>
             <Form.Group controlId="formName" className="mb-3"> 
@@ -181,7 +186,7 @@ const Profile = () => {
             <Button variant="success" onClick={handleUpdate} style={{margin:'10px'}}>
               <FaEdit /> 개인정보 수정
             </Button>
-            <Button variant="danger" onClick={handleDelete} style={{margin:'10px'}}>
+            <Button variant="success" onClick={handleDelete} style={{margin:'10px'}}>
               <FaTrash /> 회원탈퇴
             </Button>
           </div>
@@ -191,4 +196,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default MyProfile;
