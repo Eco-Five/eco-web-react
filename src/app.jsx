@@ -1,10 +1,6 @@
 import { lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 
-import Header from './components/section/Header';
-import Footer from './components/section/Footer';
-import About from './pages/home/About';
-
 const Home = lazy(() => import("./pages/home/Home"));
 const Login = lazy(() => import("./pages/login/Login"));
 const Find = lazy(() => import("./pages/find/Find"));
@@ -18,6 +14,8 @@ const Payment = lazy(() => import("./pages/payment/Payment"))
 const PaymentResult = lazy(() => import("./pages/payment/PaymentResult"))
 const Register = lazy(() => import("./pages/register/Register"))
 const Game = lazy(() => import("./pages/reactgame/Game"))
+const Board = lazy(() => import("./pages/board/Board"))
+const BoardWrite = lazy(() => import("./pages/board/BoardWrite"))
 
 //============= Header와 Footer를 제외한 레이아웃===============//
 function AppLayout({ children }) {
