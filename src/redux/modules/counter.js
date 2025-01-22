@@ -27,7 +27,7 @@ export const addNumber = (payload) => {
 /************** Action Creator 관리 *************/
 
 
-/***************** Reducer *****************/
+/******************* Reducer *******************/
 // 초기 상태값
 const initialState = {
    number: 0
@@ -51,6 +51,6 @@ const counter = (state = initialState, action) => {
          return state
    }
 }
-/***************** Reducer *****************/
+/******************* Reducer *******************/
 
 export default counter

@@ -3,9 +3,12 @@ import { Link } from 'react-router-dom';
 import '/src/assets/css/login/Login.css';
 import axios from 'axios';
 import mascot from '../../assets/anyone/eco-mascot.png'; 
+import { useDispatch, useSelector } from 'react-redux';
+import { setUserInfo } from '../../redux/modules/sessionInfo';
 
 
 const Login = () => {
+  const dispatch = useDispatch()
   const [loginInfo, setLoginInfo] = useState({ loginEmail: '', loginPwd: '' }); // 로그인 정보 저장
 
   // 로그인 API 호출
@@ -15,6 +18,7 @@ const Login = () => {
       
       if(response.data.result) {
         alert(response.data.message)
+        dispatch(setUserInfo(response.data.userInfo))     
         window.location.href = '/' // 성공 시 메인 페이지로 이동
       } else {
         alert(response.data.message)
