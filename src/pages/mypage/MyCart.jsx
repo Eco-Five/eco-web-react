@@ -11,7 +11,6 @@ const [itemsPerPage] = useState(1);
 const formatPrice = (price) => {
 return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '원';
 };
-
 const cleanTitle = (title, maxLength = 25) => {
 const cleanedTitle = title.replace(/<[^>]+>/g, '');
 if (cleanedTitle.length > maxLength) {

@@ -9,7 +9,6 @@ const ItemList = ({ items, loading }) => {
     const formatPrice = (price) => {
         return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '원';
     };
-
     const cleanTitle = (title, maxLength = 50) => {
         const cleanedTitle = title.replace(/<[^>]+>/g, '');
         if (cleanedTitle.length > maxLength) {
@@ -102,7 +101,6 @@ const ItemList = ({ items, loading }) => {
                     ))}
                 </div>
             )}
-
             {/* 모달 */}
             {modalIndex !== null && (
                 <div className="modal fade show" style={{ display: 'block' }} aria-hidden="true">
@@ -134,7 +132,7 @@ const ItemList = ({ items, loading }) => {
                     </div>
                 </div>
             )}
-
+            {/* 토스트메시지 */}
             {toastMessage && (
                 <ToastContainer position="bottom-center" className="p-3">
                     <Toast bg={toastMessage.type} onClose={() => setToastMessage(null)} autohide delay={3000}>
