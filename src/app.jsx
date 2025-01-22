@@ -1,35 +1,35 @@
 import { lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 
-import Header from './components/section/Header';
-import Footer from './components/section/Footer';
-import About from './pages/home/About';
-import MyPage from "./pages/mypage/MyPage";
-import Payment from './pages/payment/Payment';
-
-const Home = lazy(() => import("./pages/home/Home"));
-const Login = lazy(() => import("./pages/login/Login"));
-const Find = lazy(() => import("./pages/find/Find"));
-const Register = lazy(() => import("./pages/register/Register"));
+const Header = lazy(() => import("./components/section/Header"))
+const Footer = lazy(() => import("./components/section/Footer"))
+const Home = lazy(() => import("./pages/home/Home"))
+const About = lazy(() => import("./pages/home/About"))
+const Payment = lazy(() => import("./pages/payment/Payment"))
+const PaymentResult = lazy(() => import("./pages/payment/PaymentResult"))
+const MyPage = lazy(() => import("./pages/mypage/MyPage"))
+const Login = lazy(() => import("./pages/login/Login"))
+const Find = lazy(() => import("./pages/find/Find"))
+const Register = lazy(() => import("./pages/register/Register"))
+const Game = lazy(() => import("./pages/reactgame/Game"))
 
 
 //============= Header와 Footer를 제외한 레이아웃===============//
 function AppLayout({ children }) {
-  const location = useLocation();
-
-  // FindAuth 페이지에서 Header와 Footer를 제외
-  const excludeHeaderFooter = location.pathname === "/login/find";
+  const location = useLocation()
+  
+  // 페이지 변경 시, 화면 렌더링 상태값 변경
+  const hideHeaderFooter = location.pathname === "/login/find"
 
   return (
     <>
-      {!excludeHeaderFooter && <Header />}
-      <>{children}</>
-      {!excludeHeaderFooter && <Footer />}
+      {hideHeaderFooter ? null : <Header />}
+      <div>{children}</div>
+      {hideHeaderFooter ? null : <Footer />}
     </>
-  );
+  )
 }
 //============= Header와 Footer를 제외한 레이아웃===============//
-
 
 
 function App() {
@@ -42,9 +42,11 @@ function App() {
             <Route path='/about' element={<About />} />
             <Route path="/login" element={<Login />} />
             <Route path="/login/find" element={<Find />} />
-            <Route path="/mypage" element={<MyPage />} />
-            <Route path="/payment" element={<Payment />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/payment" element={<Payment />} />
+            <Route path="/payment/result" element={<PaymentResult />} />
+            <Route path="/mypage" element={<MyPage />} />
+            <Route path="/game" element={<Game />} />
           </Routes>
         </AppLayout>
       </Suspense>

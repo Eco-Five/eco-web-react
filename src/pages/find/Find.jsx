@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import '/src/assets/css/find/Find.css'
 import axios from 'axios';
 import mascot from '../../assets/anyone/eco-mascot.png';
+import { Link } from 'react-router-dom';
 
 const Find = () => {
   const [activeTab, setActiveTab] = useState('findId');
@@ -57,7 +58,7 @@ const Find = () => {
   };
   // =========================================UI=========================================//
   return (
-    <div className="container d-flex flex-column align-items-center justify-content-center h-100">
+    <div className="d-flex flex-column align-items-center justify-content-center">
       <div className="mb-4">
         <div className="logo">
           <img src={mascot} alt="마스코트" style={{ width: '100px', height: '100px' }} />
@@ -214,13 +215,13 @@ const Find = () => {
         </div>
       </div>
       <div className="mt-4 text-center">
-        <a href="/login" className="text-muted me-3">로그인</a>
+        <Link to="/login" className="text-muted me-3">로그인</Link>
         <span style={{ color: 'rgb(187, 188, 189)' }}>|</span>
-        <a href="/register" className="text-muted me-3 ms-3">회원가입</a>
+        <Link to="/register" className="text-muted me-3 ms-3">회원가입</Link>
         <span style={{ color: 'rgb(187, 188, 189)' }}>|</span>
-        <a href="/question" className="text-muted me-3 ms-3">고객센터</a>
+        <Link to="/question" className="text-muted me-3 ms-3">고객센터</Link>
         <span style={{ color: 'rgb(187, 188, 189)' }}>|</span>
-        <a href="/" className="text-muted ms-3">홈화면</a>
+        <Link to="/" className="text-muted ms-3">홈화면</Link>
       </div>
     </div>
   );
