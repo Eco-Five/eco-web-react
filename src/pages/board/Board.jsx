@@ -13,7 +13,7 @@ const Board = () => {
     
 
 
-    //글쓰기 버튼
+    //글쓰기 버튼 클릭
     const handleWriteClick = () => {
         if (user) {
             console.log("user 정보:", user);
