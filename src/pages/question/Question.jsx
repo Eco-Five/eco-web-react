@@ -119,7 +119,7 @@ const Question = () => {
                                     <td>{question.inquiry_id}</td>
                                     <td>{question.type_name}</td>
                                     <td>
-                                        <a href={`/api/question/${question.inquiry_id}`}>
+                                        <a href={`/question/${question.inquiry_id}`}>
                                             {question.title}
                                         </a>
                                     </td>
