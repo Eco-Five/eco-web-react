@@ -1,21 +1,21 @@
 import { lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 
+const Home = lazy(() => import("./pages/home/Home"));
+const Login = lazy(() => import("./pages/login/Login"));
+const Find = lazy(() => import("./pages/find/Find"));
+const MyPage = lazy(() => import("./pages/mypage/MyPage"));
+const Product = lazy(() => import("./pages/product/Product"));
+const Question = lazy(() => import('./pages/question/Question'))
 const Header = lazy(() => import("./components/section/Header"))
 const Footer = lazy(() => import("./components/section/Footer"))
-const Home = lazy(() => import("./pages/home/Home"))
 const About = lazy(() => import("./pages/home/About"))
 const Payment = lazy(() => import("./pages/payment/Payment"))
 const PaymentResult = lazy(() => import("./pages/payment/PaymentResult"))
-const MyPage = lazy(() => import("./pages/mypage/MyPage"))
-const Login = lazy(() => import("./pages/login/Login"))
-const Find = lazy(() => import("./pages/find/Find"))
 const Register = lazy(() => import("./pages/register/Register"))
 const Game = lazy(() => import("./pages/reactgame/Game"))
-const Product = lazy(() => import("./pages/product/Product"));
-const Board = lazy(() => import("./pages/board/Board"));
-const BoardWrite = lazy(() => import("./pages/board/BoardWrite"));
-const Question = lazy(() => import("./pages/question/Question"))
+const Board = lazy(() => import("./pages/board/Board"))
+const BoardWrite = lazy(() => import("./pages/board/BoardWrite"))
 
 //============= Header와 Footer를 제외한 레이아웃===============//
 function AppLayout({ children }) {
@@ -33,6 +33,7 @@ function AppLayout({ children }) {
   )
 }
 //============= Header와 Footer를 제외한 레이아웃===============//
+
 function App() {
   return (
     <BrowserRouter>
@@ -46,9 +47,9 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/board" element={<Board />} />
             <Route path="/board/write" element={<BoardWrite />} />
-            <Route path='/question' element={<Question />} />
-            <Route path='/product' element={<Product />} />
             <Route path="/payment" element={<Payment />} />
+            <Route path="/product" element={<Product />} />
+            <Route path='/question' element={<Question />} />
             <Route path="/payment/result" element={<PaymentResult />} />
             <Route path="/mypage" element={<MyPage />} />
             <Route path="/game" element={<Game />} />
