@@ -50,17 +50,6 @@ const Board = ({ user, initialCategory = 'all', initialPage = 1 }) => {
         fetchBoardData(1, selectedCategory);
     };
 
-    // 글쓰기 버튼 클릭 이벤트
-    const handleWriteClick = () => {
-        if(user && user.isAuthenticated){
-            console.log("user : " + user);
-            navigate ('/board/write')
-        }else{
-            console.log("user : " + user.name);
-            alert("회원만 글쓰기가 가능합니다")
-        }
-    };
-
     useEffect(() => {
         fetchBoardData(currentPage, category);
     }, [currentPage, category]);
@@ -80,9 +69,13 @@ const Board = ({ user, initialCategory = 'all', initialPage = 1 }) => {
                             <option value="2">친환경팁</option>
                             <option value="3">자유게시판</option>
                         </select>
-                        <button className="btn btn-dark" onClick={handleWriteClick}>
-                            글쓰기
-                        </button>
+                        {user && user.isAuthenticated ? (
+                            <a href="/board/write">
+                                <button className="btn btn-dark">글쓰기</button>
+                            </a>
+                        ) : (
+                            <button className="btn btn-dark" id="visitor">글쓰기</button>
+                        )}
                     </div>
 
                     {/* 커뮤니티 글 목록 */}
