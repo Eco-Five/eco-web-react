@@ -7,16 +7,22 @@ const NoticeBoard = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
 
+    // 게시글 데이터 가져오기
+const fetchBoardData = async (page, category = '') => {
+    try {
+        const response = await axios.get(`/api/notice?page=${page}`);
+        const { notices, totalPages } = response.data;
+        setNotices(notices);
+        setCurrentPage(page);
+        setTotalPages(totalPages);
+    } catch (error) {
+        console.error('Error fetching notices:', error);
+    }
+};
+
+
     useEffect(() => {
-        // Fetch notices from the backend
-        axios
-            .get(`/api/notice?page=${currentPage}`)
-            .then((response) => {
-                const { notices, totalPages } = response.data;
-                setNotices(notices);
-                setTotalPages(totalPages);
-            })
-            .catch((error) => console.error('Error fetching notices:', error));
+        fetchBoardData(currentPage);
     }, [currentPage]);
 
     const handlePageClick = (page) => {
