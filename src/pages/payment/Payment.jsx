@@ -1,7 +1,11 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import { useSearchParams } from 'react-router-dom'
 
 const Payment = () => {
+    const [ searchParams ] = useSearchParams()
+    if (searchParams.get("message") !== null) { alert(searchParams.get("message")) }
+    
     /************************************ useState & dataSet **************************************/
     const [selectedPlan, setSelectedPlan] = useState('선택없음')
     const [selectedPrice, setSelectedPrice] = useState(0)
@@ -29,7 +33,8 @@ const Payment = () => {
             try {
                 const response = await axios.post('api/users/naverPay', {
                     subsPlan: selectedPlan,
-                    subsPrice: selectedPrice
+                    subsPrice: selectedPrice,
+                    server: 'react'
                 })
                 const result = await response.data
                 window.location.href = `https://test-m.pay.naver.com/payments/${result.body.reserveId}`

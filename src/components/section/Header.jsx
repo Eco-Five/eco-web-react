@@ -16,11 +16,10 @@ const Header = () => {
         const isAuthCheck = async () => {
             try {
                 const response = await axios.get('api/api/protected')
-                console.log(response.data)
                 setIsVisible(response.data.auth)
             } catch (error) {
                 console.error("isAuthCheck error")
-                setIsVisible(error.response.data.user)
+                setIsVisible(error.response.data.auth)
             }
         }
         isAuthCheck()
@@ -28,7 +27,7 @@ const Header = () => {
 
     return (
         <>
-            <Row className='align-items-center mt-2 mb-2'>
+            <Row className='align-items-center mt-2 mb-2' style={{ weight: "100vh" }}>
                 <Col></Col>
                 <Col className='text-center'>
                     <Card.Title className="display-2 fw-bold fs-2" style={{ letterSpacing: "3px" }}>
@@ -61,13 +60,18 @@ const Header = () => {
                     <Nav.Link eventKey="question" className='text-secondary' onClick={() => navi('/question')}>고객문의</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                    <Nav.Link eventKey="payment" className='text-secondary' onClick={() => navi('/payment')} 
+                    <Nav.Link eventKey="payment" className='text-secondary' onClick={() => navi('/payment')}
                         style={{ display: isVisible ? "":"none" }}>구독
                     </Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                    <Nav.Link eventKey="mypage" className='text-secondary' onClick={() => navi('/mypage')} 
+                    <Nav.Link eventKey="mypage" className='text-secondary' onClick={() => navi('/mypage')}
                         style={{ display: isVisible ? "":"none" }}>마이페이지
+                    </Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                    <Nav.Link eventKey="game" className='text-secondary' onClick={() => navi('/game')}
+                        style={{ display: isVisible ? "":"none" }}>ReactQuiz!
                     </Nav.Link>
                 </Nav.Item>
             </Nav>
