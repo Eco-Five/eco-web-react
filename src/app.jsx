@@ -1,7 +1,6 @@
 import { lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 
-
 const Header = lazy(() => import("./components/section/Header"))
 const Footer = lazy(() => import("./components/section/Footer"))
 const Home = lazy(() => import("./pages/home/Home"))
@@ -48,7 +47,7 @@ function App() {
             <Route path="/board" element={<Board />} />
             <Route path="/board/write" element={<BoardWrite />} />
             <Route path='/question' element={<Question />} />
-
+            <Route path='/product' element={<Product />} />
             <Route path="/payment" element={<Payment />} />
             <Route path="/payment/result" element={<PaymentResult />} />
             <Route path="/mypage" element={<MyPage />} />
