@@ -2,9 +2,13 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '/src/assets/css/login/Login.css';
 import axios from 'axios';
+import mascot from '../../assets/anyone/eco-mascot.png'; 
+import { useDispatch, useSelector } from 'react-redux';
+import { setUserInfo } from '../../redux/modules/sessionInfo';
 
 
 const Login = () => {
+  const dispatch = useDispatch()
   const [loginInfo, setLoginInfo] = useState({ loginEmail: '', loginPwd: '' }); // 로그인 정보 저장
 
   // 로그인 API 호출
@@ -14,6 +18,7 @@ const Login = () => {
       
       if(response.data.result) {
         alert(response.data.message)
+        dispatch(setUserInfo(response.data.userInfo))     
         window.location.href = '/' // 성공 시 메인 페이지로 이동
       } else {
         alert(response.data.message)
@@ -49,7 +54,7 @@ const Login = () => {
       <div>
         <div className="text-center mb-4">
           <img
-            src="src\assets\anyone\eco-mascot.png"
+            src={mascot}
             alt="로고"
             className="mb-3"
             style={{ height: '100px' }}
@@ -95,19 +100,19 @@ const Login = () => {
           </div>
 
           <div className="d-flex justify-content-between">
-            <Link to="/api/signup/google" style={{ width: '100%' }}>
+            <a href='/api/api/signup/google?server=react' style={{ width: '100%' }}>
               <button type="button" className="mt-1 btn w-100" style={{ border: '1px solid rgb(207, 207, 207)', background: 'none', }}>
                 <img src="src\assets\login\google.webp" alt="Google" style={{ maxHeight: '25px', objectFit: 'cover' }} /> Sign up with Google
               </button>
-            </Link>
+            </a>
           </div>
 
           <div className="d-flex justify-content-between">
-            <Link to="/api/auth/naver" style={{ width: '100%' }}>
+            <a href="/api/api/auth/naver?server=react" style={{ width: '100%' }}>
               <button type="button" className="mt-3 btn w-100" style={{ border: '1px solid rgb(207, 207, 207)', background: 'none', }}>
                 <img src="src\assets\login\naverLogo.png" alt="네이버 로그인" style={{ maxHeight: '25px', objectFit: 'cover' }} /> Sign up with Naver
               </button>
-            </Link>
+            </a>
           </div>
         </form>
 
@@ -118,7 +123,7 @@ const Login = () => {
           </Link>
         </div>
 
-        <footer className="text-center mt-4 text-secondary small">
+        <div className="text-center mt-4 text-secondary small">
           <div>
             <Link to="#" className="text-decoration-none text-secondary me-2">
               이용약관
@@ -128,7 +133,7 @@ const Login = () => {
             </Link>
           </div>
           <p className="mt-2 mb-0">© 2024 에코라이프. All rights reserved.</p>
-        </footer>
+        </div>
       </div>
     </div>
   );

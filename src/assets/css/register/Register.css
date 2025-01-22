@@ -1,0 +1,40 @@
+.address-input {
+    padding: 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+}
+
+.address-input label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.address-input input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.address-input button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.address-input #address-result {
+    margin-top: 10px;
+}
+
+.btn {
+    padding: 0.55rem 1.8rem; /* 세로 및 가로 패딩 조정 */
+    font-size: 0.9rem; /* 글씨 크기 조정 */
+    line-height: 1; /* 줄 높이 조정 */
+    white-space: nowrap; /* 글씨가 줄 바꿈되지 않도록 설정 */
+  }
+
+
+

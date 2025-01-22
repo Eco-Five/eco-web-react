@@ -16,11 +16,10 @@ const Header = () => {
         const isAuthCheck = async () => {
             try {
                 const response = await axios.get('api/api/protected')
-                console.log(response.data)
                 setIsVisible(response.data.auth)
             } catch (error) {
                 console.error("isAuthCheck error")
-                setIsVisible(error.response.data.user)
+                setIsVisible(error.response.data.auth)
             }
         }
         isAuthCheck()
@@ -28,7 +27,7 @@ const Header = () => {
 
     return (
         <>
-            <Row className='align-items-center mt-2 mb-2'>
+            <Row className='align-items-center mt-2 mb-2' style={{ weight: "100vh" }}>
                 <Col></Col>
                 <Col className='text-center'>
                     <Card.Title className="display-2 fw-bold fs-2" style={{ letterSpacing: "3px" }}>
@@ -39,7 +38,7 @@ const Header = () => {
 
                 <Col className='text-end me-3'>
                     <Button onClick={() => navi('/login')} variant="dark" style={{ display: isVisible ? "none":"" }}>로그인</Button>
-                    <Button onClick={() => {navi('api/api/logout')
+                    <Button onClick={() => {navi('api/api/logout') 
                         window.location.reload() }} variant="dark" style={{ display: isVisible ? "":"none" }}>로그아웃</Button>
                 </Col>
             </Row>
@@ -60,16 +59,19 @@ const Header = () => {
                 <Nav.Item>
                     <Nav.Link eventKey="question" className='text-secondary' onClick={() => navi('/question')}>고객문의</Nav.Link>
                 </Nav.Item>
-                <Nav.Item>
-                    <Nav.Link eventKey="payment" className='text-secondary' onClick={() => navi('/payment')} 
-                        style={{ display: isVisible ? "":"none" }}>구독
-                    </Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                    <Nav.Link eventKey="mypage" className='text-secondary' onClick={() => navi('/mypage')} 
-                        style={{ display: isVisible ? "":"none" }}>마이페이지
-                    </Nav.Link>
-                </Nav.Item>
+                {isVisible && (
+                    <>
+                        <Nav.Item>
+                            <Nav.Link eventKey="payment" className='text-secondary fw-blod' onClick={() => navi('/payment')}>구독</Nav.Link>
+                        </Nav.Item>
+                        <Nav.Item>
+                            <Nav.Link eventKey="mypage" className='text-secondary fw-blod' onClick={() => navi('/mypage')}>마이페이지</Nav.Link>
+                        </Nav.Item>
+                        <Nav.Item>
+                            <Nav.Link eventKey="game" className='text-secondary fw-blod' onClick={() => navi('/game')}>ReactQuiz!</Nav.Link>
+                        </Nav.Item>
+                    </>
+                )}
             </Nav>
 
             <div style={{ borderBottom: "1px solid #ddd" }} ></div>
