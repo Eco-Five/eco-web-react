@@ -1,5 +1,17 @@
-const MyPage = () => {
-  return <div>MyPage</div>;
-};
+import 'react'
+import MyProfile from './MyProfile';
+import MyBoard from './MyBoard';
+import MyCart from './MyCart';
 
-export default MyPage;
+const MyPage = () => {
+
+    return (
+        <>
+        <MyProfile />
+        <MyCart />
+        <MyBoard />
+        </>
+    )
+}
+
+export default MyPage
