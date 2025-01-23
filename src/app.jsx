@@ -16,6 +16,10 @@ const Register = lazy(() => import("./pages/register/Register"))
 const Game = lazy(() => import("./pages/reactgame/Game"))
 const Board = lazy(() => import("./pages/board/Board"))
 const BoardWrite = lazy(() => import("./pages/board/BoardWrite"))
+const NoticeBoard = lazy(() => import("./pages/notice/NoticeBoard"))
+const ReadNotice = lazy(() => import("./pages/notice/ReadNotice"))
+const UpdateNotice = lazy(() => import("./pages/notice/UpdateNotice"))
+const WriteNotice = lazy(() => import("./pages/notice/WriteNotice"))
 
 //============= Header와 Footer를 제외한 레이아웃===============//
 function AppLayout({ children }) {
@@ -53,6 +57,10 @@ function App() {
             <Route path="/payment/result" element={<PaymentResult />} />
             <Route path="/mypage" element={<MyPage />} />
             <Route path="/game" element={<Game />} />
+            <Route path="/notice" element={<NoticeBoard />} />
+            <Route path="/notice/read/:id" element={<ReadNotice />} />
+            <Route path="/notice/update/:id" element={<UpdateNotice />} />
+            <Route path="/notice/write" element={<WriteNotice />} />
           </Routes>
         </AppLayout>
       </Suspense>
@@ -61,4 +69,4 @@ function App() {
 }
 
 
-export default App
+export default App;
