@@ -72,11 +72,23 @@ const Product = () => {
         return allItems.slice(startIndex, startIndex + itemsPerPage);
     };
 
+    const formatPrice = (price) => {
+        return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '원';
+    };
+
+    const cleanTitle = (title, maxLength = 50) => {
+        const cleanedTitle = title.replace(/<[^>]+>/g, '');
+        if (cleanedTitle.length > maxLength) {
+            return cleanedTitle.slice(0, maxLength) + '...';
+        }
+        return cleanedTitle;
+    };
+
     return (
         <div className="container">
             <ItemSearch query={query} setQuery={setQuery} handleSearch={handleSearch} handleEnterKey={handleEnterKey} />
             <ItemSort sort={sort} setSort={setSort} handleSortChange={handleSortChange} />
-            <ItemList items={paginatedItems()} loading={loading} />
+            <ItemList items={paginatedItems()} loading={loading} formatPrice={formatPrice} cleanTitle={cleanTitle}/>
             <ItemPage
                 currentPage={currentPage}
                 totalPages={totalPages}

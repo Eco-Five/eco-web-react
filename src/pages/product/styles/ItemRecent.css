@@ -1,0 +1,26 @@
+.recent-viewed-container {
+    border: 1px solid #e0e0e0;
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: translateY(-60%);
+    width: 150px;
+    height: 50%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+}
+
+.recent-viewed-container p {
+    font-size: 12px;
+}
+
+.recent-viewed-container .category-card {
+    margin-bottom: 20px;
+}
+
+.recent-viewed-container .category-card img {
+    width: 100%;
+    cursor: pointer;
+}

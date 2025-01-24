@@ -8,17 +8,6 @@ const [cartItems, setCartItems] = useState([]);
 const [currentPage, setCurrentPage] = useState(1);
 const [itemsPerPage] = useState(1);
 
-const formatPrice = (price) => {
-return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '원';
-};
-const cleanTitle = (title, maxLength = 25) => {
-const cleanedTitle = title.replace(/<[^>]+>/g, '');
-if (cleanedTitle.length > maxLength) {
-    return cleanedTitle.slice(0, maxLength) + '...';
-}
-return cleanedTitle;
-};
-
 useEffect(() => {
 // 장바구니 데이터 조회
 const getCart = async () => {
@@ -44,7 +33,7 @@ const indexOfLastItem = currentPage * itemsPerPage;
 const indexOfFirstItem = indexOfLastItem - itemsPerPage;
 const currentItems = cartItems.slice(indexOfFirstItem, indexOfLastItem);
 
-// 페이지 변경 핸들러
+// 페이지 변경
 const handlePageChange = (direction) => {
 if (direction === 'prev' && currentPage > 1) {
     setCurrentPage(currentPage - 1);
@@ -54,7 +43,7 @@ if (direction === 'next' && currentPage < Math.ceil(cartItems.length / itemsPerP
 }
 };
 
-// 아이템 삭제 핸들러
+// 장바구니 삭제
 const handleDeleteItem = async (cartId) => {
 try {
     const response = await axios.post('/api/api/deleteCart', { cart_id: cartId });
@@ -70,6 +59,17 @@ try {
     console.error('상품 삭제 오류:', error);
     alert('상품 삭제에 오류가 발생했습니다.');
 }
+};
+
+const formatPrice = (price) => {
+    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '원';
+};
+const cleanTitle = (title, maxLength = 25) => {
+    const cleanedTitle = title.replace(/<[^>]+>/g, '');
+    if (cleanedTitle.length > maxLength) {
+        return cleanedTitle.slice(0, maxLength) + '...';
+    }
+    return cleanedTitle;
 };
 
 return (
