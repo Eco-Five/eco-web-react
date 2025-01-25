@@ -3,9 +3,6 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Button, Card, Col, Row } from 'react-bootstrap'
 
-import { faBox } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 const MainProduct = () => {
     const [productData, setProductData] = useState([]);
 
@@ -32,7 +29,7 @@ const MainProduct = () => {
     return (
         <>
             <div className='ms-3' style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>
-                <FontAwesomeIcon icon={faBox} style={{ color: '#FAC608' }}/> 추천제품
+                <span style={{ color: '#FAC608' }}>📦</span>추천제품
             </div>
             <Row className=" m-2">
                 {productData.map((item, key) => (

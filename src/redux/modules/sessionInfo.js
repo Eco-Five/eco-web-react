@@ -19,15 +19,16 @@ export const setUserInfo = (payload) => {
 
 /***************** Reducer *****************/
 const initialState = {
-   userInfo: {},
+   userInfo: null,
+   isLoggedIn: false  // 로그인 상태 추가
 }
 
 const sessionInfo = (state = initialState, action) => {
    switch (action.type) {
       case GET_USERINFO:
-         return {userInfo: state.userInfo}
+         return {userInfo: state.userInfo, isLoggedIn: state.isLoggedIn}
       case SET_USERINFO:
-         return {userInfo: action.payload}
+         return {userInfo: action.payload, isLoggedIn: true}
       default:
          return state
    }

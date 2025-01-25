@@ -2,6 +2,7 @@ import 'react'
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, Card, Col, Image, Row } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
 import Nav from 'react-bootstrap/Nav';
 import axios from 'axios';
 
@@ -9,21 +10,23 @@ import logo from "../../assets/anyone/eco-logo.png";
 
 
 const Header = () => {
-    const navi = useNavigate();
-    const [isVisible, setIsVisible] = useState(false);
+    const navi = useNavigate()
+    const isLoggedIn = useSelector((state) => state.sessionInfo.isLoggedIn)
+    const [isVisible, setIsVisible] = useState(isLoggedIn)
 
     useEffect(() => {
-        const isAuthCheck = async () => {
-            try {
-                const response = await axios.get('api/api/protected')
-                setIsVisible(response.data.auth)
-            } catch (error) {
-                console.error("isAuthCheck error")
-                setIsVisible(error.response.data.auth)
-            }
-        }
-        isAuthCheck()
-    }, [])
+        setIsVisible(isLoggedIn)
+        // const isAuthCheck = async () => {
+        //     try {
+        //         const response = await axios.get('api/api/protected')
+        //         setIsVisible(response.data.auth)
+        //     } catch (error) {
+        //         console.error("isAuthCheck error")
+        //         setIsVisible(error.response.data.auth)
+        //     }
+        // }
+        // isAuthCheck()
+    }, [isLoggedIn])
 
     return (
         <>
