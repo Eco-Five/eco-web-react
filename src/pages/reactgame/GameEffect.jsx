@@ -3,7 +3,6 @@ import Timers from './Timers'
 
 const GameEffect = () => {
     const [showTimer, setShowTimer] = useState(false)
-
     return (
         <div>
             {showTimer && <Timers />}

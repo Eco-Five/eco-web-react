@@ -14,7 +14,7 @@ const Header = () => {
   useEffect(() => {
     const isAuthCheck = async () => {
       try {
-        const response = await axios.get("api/api/protected");
+        const response = await axios.get("/api/api/protected");
         setIsVisible(response.data.auth);
       } catch (error) {
         console.error("isAuthCheck error");
@@ -132,6 +132,33 @@ const Header = () => {
                 onClick={() => navi("/game")}
               >
                 ReactQuiz!
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link
+                eventKey="hoon"
+                className="text-secondary fw-blod"
+                onClick={() => navi("/hoon")}
+              >
+                Fucking Hoon World!
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link
+                eventKey="checkmember"
+                className="text-secondary fw-blod"
+                onClick={() => navi("/checkmember")}
+              >
+                데스노트
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link
+                eventKey="react-memo"
+                className="text-secondary fw-blod"
+                onClick={() => navi("/reactmemo")}
+              >
+                리액트 메모 활용
               </Nav.Link>
             </Nav.Item>
           </>

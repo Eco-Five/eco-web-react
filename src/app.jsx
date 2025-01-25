@@ -21,6 +21,8 @@ const NoticeBoard = lazy(() => import("./pages/notice/NoticeBoard"))
 const ReadNotice = lazy(() => import("./pages/notice/ReadNotice"))
 const UpdateNotice = lazy(() => import("./pages/notice/UpdateNotice"))
 const WriteNotice = lazy(() => import("./pages/notice/WriteNotice"))
+const CheckMember = lazy(() => import("./pages/checkmember/CheckMember"))
+const ReactMemo = lazy(() => import("./pages/hoonreact-memo/ReactMemo"))
 
 
 //============= Header와 Footer를 제외한 레이아웃===============//
@@ -64,6 +66,8 @@ function App() {
             <Route path="/notice/read/:id" element={<ReadNotice />} />
             <Route path="/notice/update/:id" element={<UpdateNotice />} />
             <Route path="/notice/write" element={<WriteNotice />} />
+            <Route path="/checkmember" element={<CheckMember />} />
+            <Route path='/reactmemo' element={<ReactMemo />} />
           </Routes>
         </AppLayout>
       </Suspense>
