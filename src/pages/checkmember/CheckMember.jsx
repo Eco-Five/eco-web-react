@@ -1,5 +1,7 @@
 import React, { useReducer, useState } from "react";
 import Student from "./Student";
+import Props from "./Props";
+import HoonState from "./HoonState";
 
 
 const reducer = (state, action) => {
@@ -48,6 +50,7 @@ const CheckMember = () => {
   const [studentInfo, dispatch] = useReducer(reducer, initialState)
 
   return  (
+    <>
     <div>
       <h1>Death Note</h1>
       <p>Death Count: {studentInfo.count}</p>
@@ -71,6 +74,11 @@ const CheckMember = () => {
           />)
         })}
     </div>
+    <hr />
+    <Props word="안녕" self="혼자서" react="리액트" do="하는 중"/>
+    <hr />
+    <HoonState/>
+    </>
   )
 };
 

@@ -17,6 +17,7 @@ const RmCallback = () => {
   return (
     <div style={{ border: "2px solid navy", padding: "10px" }}>
       <h1>귀족</h1>
+      <h3>usecallback활용</h3>
       <p>계급:{noblessAGE}</p>
       <button onClick={incrementNoblessAge}>귀족 신분 상승</button>
       <SlaveCallback name={"백인"} tellMe={tellMe} />

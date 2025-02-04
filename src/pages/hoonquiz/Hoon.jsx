@@ -1,7 +1,6 @@
 import React from "react";
 import HoonCallback from "./HoonCallback";
 import HoonReducer from "./HoonReducer";
-import HoonRedux from "./HoonRedux";
 import HoonEffect from "./HoonEffect";
 import HoonRef from "./HoonRef";
 import HoonRef2 from "./HoonRef2";
@@ -14,8 +13,6 @@ const Hoon = () => {
       <HoonCallback />
       <hr />
       <HoonReducer />
-      <hr />
-      <HoonRedux />
       <hr />
       <HoonEffect />
       <hr />

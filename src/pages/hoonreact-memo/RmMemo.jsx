@@ -17,6 +17,7 @@ const RmMemo = () => {
   return (
     <div style={{ border: "2px solid navy", padding: "10px" }}>
       <h1>귀족</h1>
+      <h3>usememo활용</h3>
       <p>계급:{noblessAGE}</p>
       <button onClick={incrementNoblessAge}>귀족 신분 상승</button>
       <SlaveMemo name={name} />

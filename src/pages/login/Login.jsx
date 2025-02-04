@@ -1,27 +1,33 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '/src/assets/css/login/Login.css';
 import axios from 'axios';
 import mascot from '../../assets/anyone/eco-mascot.png'; 
 import { useDispatch, useSelector } from 'react-redux';
-import { setUserInfo } from '../../redux/modules/sessionInfo';
+import { setAuth } from '../../redux/modules/auth';
 
 
 const Login = () => {
   const dispatch = useDispatch()
   const [loginInfo, setLoginInfo] = useState({ loginEmail: '', loginPwd: '' }); // 로그인 정보 저장
+  const navigate = useNavigate();
+  
 
   // 로그인 API 호출
   const loginCheck = async (info) => {
     try {
       const response = await axios.post('/api/api/memberLogin', info); // Axios로 POST 요청
-      
       if(response.data.result) {
         alert(response.data.message)
-        dispatch(setUserInfo(response.data.userInfo))     
-        window.location.href = '/' // 성공 시 메인 페이지로 이동
+        
+        /***************** Dispatcher ***************/
+        dispatch(setAuth(true))
+        /***************** Dispatcher ***************/
+        
+        navigate('/')
+        //window.location.href = '/' // 성공 시 메인 페이지로 이동
       } else {
-        alert(response.data.message)
+        setError(response.data.message)
       }
     } catch (err) {
       console.error('로그인 요청 중 오류 발생:', err);
@@ -37,14 +43,14 @@ const Login = () => {
     const password = e.target.loginPwd.value;
 
     // 로그인 정보 상태 업데이트
-    const info = {
-      loginEmail: email,
-      loginPwd: password,
-    };
-    setLoginInfo(info);
+    //const info = {
+      //loginEmail: email,
+      //loginPwd: password,
+    //};
+    //setLoginInfo(info);
 
     // API 호출
-    loginCheck(info);
+    loginCheck({ loginEmail: email, loginPwd: password });
   };
 
 

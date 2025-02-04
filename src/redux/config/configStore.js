@@ -1,12 +1,13 @@
 // https://olive-jam.tistory.com/45
 import { legacy_createStore, combineReducers } from 'redux'
 import counter from '../modules/counter'
-import sessionInfo from '../modules/sessionInfo'
+import auth from '../modules/auth'
+
 
 const rootReducer = combineReducers({
    // 작성한 reducer(모듈)을 store에 연결
    counter: counter,
-   sessionInfo: sessionInfo,
+   auth: auth
 })
 
 const store = legacy_createStore(rootReducer)

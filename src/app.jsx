@@ -23,7 +23,8 @@ const UpdateNotice = lazy(() => import("./pages/notice/UpdateNotice"))
 const WriteNotice = lazy(() => import("./pages/notice/WriteNotice"))
 const CheckMember = lazy(() => import("./pages/checkmember/CheckMember"))
 const ReactMemo = lazy(() => import("./pages/hoonreact-memo/ReactMemo"))
-
+const HoonRedux = lazy(() => import("./pages/hoonredux/HoonRedux"))
+const Weather = lazy(() => import("./pages/weatherapp/Weather"))
 
 //============= Header와 Footer를 제외한 레이아웃===============//
 function AppLayout({ children }) {
@@ -68,6 +69,8 @@ function App() {
             <Route path="/notice/write" element={<WriteNotice />} />
             <Route path="/checkmember" element={<CheckMember />} />
             <Route path='/reactmemo' element={<ReactMemo />} />
+            <Route path="/redux" element={<HoonRedux />} />
+            <Route path="/weather" element={<Weather />} />
           </Routes>
         </AppLayout>
       </Suspense>

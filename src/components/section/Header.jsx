@@ -4,13 +4,19 @@ import { useNavigate } from "react-router-dom";
 import { Button, Card, Col, Image, Row } from "react-bootstrap";
 import Nav from "react-bootstrap/Nav";
 import axios from "axios";
-
 import logo from "../../assets/anyone/eco-logo.png";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteAuth } from "../../redux/modules/auth";
+
 
 const Header = () => {
+  const dispatch = useDispatch();
   const navi = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
 
+  const data = useSelector((state) => state.auth.isVisible);
+  console.log(data);
+  
   useEffect(() => {
     const isAuthCheck = async () => {
       try {
@@ -22,7 +28,7 @@ const Header = () => {
       }
     };
     isAuthCheck();
-  }, []);
+  }, [data]);
 
   return (
     <>
@@ -49,7 +55,7 @@ const Header = () => {
           <Button
             onClick={() => {
               navi("api/api/logout");
-              window.location.reload();
+              dispatch(deleteAuth(false))
             }}
             variant="dark"
             style={{ display: isVisible ? "" : "none" }}
@@ -159,6 +165,24 @@ const Header = () => {
                 onClick={() => navi("/reactmemo")}
               >
                 리액트 메모 활용
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link
+                eventKey="redux"
+                className="text-secondary fw-blod"
+                onClick={() => navi("/redux")}
+              >
+                리덕스 완전 정복
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link
+                eventKey="weather"
+                className="text-secondary fw-blod"
+                onClick={() => navi("/weather")}
+              >
+                openweather
               </Nav.Link>
             </Nav.Item>
           </>
